@@ -1,23 +1,26 @@
 html,
 body {
+  min-height: 100%;
   height: 100%;
   width: 100%;
   position: relative;
 }
 
 body {
-  overflow: hidden;
+  //overflow: hidden;
+  //background-color: #f1bb03;
+  background-image: url('#{$img-path}bg.jpg');
+  background-size: cover;
 }
 
 @import 'app/debug';
 
 #main {
 
-  //  overflow: hidden;
   position: relative;
-  height: 100%;
   width: 100%;
 
+  @import 'app/header_footer';
   @import 'app/content';
 
 }

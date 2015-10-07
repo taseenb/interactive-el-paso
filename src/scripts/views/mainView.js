@@ -3,7 +3,13 @@ define( function ( require ) {
   'use strict';
 
   var _ = require( 'underscore' );
+  var headerTpl = require( 'text!tpl/header.html' );
   var contentTpl = require( 'text!tpl/content.html' );
+  var footerTpl = require( 'text!tpl/footer.html' );
+
+  // Views
+  var ListView = require( 'views/listView.js' );
+
 
   var View = function ( el ) {
 
@@ -17,19 +23,26 @@ define( function ( require ) {
 
     initialize: function () {
 
-//      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
-//      App.mediator.subscribe( 'accelerometer', this.onAccelerometer.bind( this ) );
-//      App.mediator.subscribe( 'scroll', this.onScroll.bind( this ) );
+      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
     },
 
     render: function () {
-      var html = _.template( contentTpl )();
+
+      var html = '';
+      html += _.template( headerTpl )({
+        copy: App.data.copy
+      });
+      html += _.template( contentTpl )();
+      html += _.template( footerTpl )();
       this.$el.html( html );
 
       this.setupElements();
       this.setupEvents();
 
+      // Create list view
+      App.listView = new ListView( '#list' );
+      App.listView.render();
     },
 
     setupElements: function () {
@@ -37,30 +50,26 @@ define( function ( require ) {
     },
 
     setupEvents: function () {
-//      var event = App.isTouch ? 'touchstart' : 'click';
-//      this.$el.on( event, this.onClick.bind( this ) );
+
+      // var event = App.isTouch ? 'touchstart' : 'click';
+      // this.$el.on( event, this.onClick.bind( this ) );
+
     },
 
-    onClick: function () {
-      console.log( 'click' );
+    show: function ( view ) {
+
+      if (view === 'list') {
+        App.listView.show();
+        App.swiperView.hide();
+      } else if (view === 'swiper' ) {
+        App.swiperView.show();
+        App.listView.hide();
+      }
+
     },
 
     onResize: function ( e ) {
       // console.log(e.width, e.height);
-    },
-
-    onScroll: function ( e ) {
-      // console.log( e.scrollLeft, e.scrollTop );
-    },
-
-    onAccelerometer: function ( e ) {
-
-      var x = Math.abs( e.x );
-      var y = Math.abs( e.y );
-      var z = Math.abs( e.z );
-
-      console.log( x, y, z );
-      // this.$debug.html( 'x: ' + x.toFixed( 2 ) + '<br>y: ' + y.toFixed( 2 ) + '<br>z: ' + z.toFixed( 2 ) );
 
     }
 

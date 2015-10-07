@@ -7,11 +7,6 @@ define( function ( require ) {
   // Create App global
   window.App = window.App || {};
 
-  // Helper
-  var getDevicePixelRatio = require( 'vendors/getDevicePixelRatio' );
-  App.devicePixelRatio = getDevicePixelRatio();
-  //  console.log( 'devicePixelRatio', App.devicePixelRatio );
-
   // Touch
   App.isTouch = $( 'html' ).hasClass( 'touch' );
   //  console.log( 'touch', App.isTouch );
@@ -19,12 +14,26 @@ define( function ( require ) {
   // Global Events - pub/sub
   App.mediator = new Mediator();
   require( 'resize' );
-  require( 'scroll' );
-  //  require( 'accelerometer' );
 
-  // Main view
-  var MainView = require( 'views/mainView.js' );
-  var mainView = new MainView( '#main' );
-  mainView.render();
+  // Import Swiper
+  App.swiper = require( 'swiper' );
+
+
+  $.ajax( {
+    url: 'data/data.js',
+    dataType: 'jsonp',
+    jsonpCallback: 'callback',
+    success: function ( data ) {
+      App.data = data;
+
+      console.log(data);
+
+      // Main view
+      var MainView = require( 'views/mainView.js' );
+      App.mainView = new MainView( '#main' );
+      App.mainView.render();
+    }
+  });
+
 
 } );

@@ -7,11 +7,11 @@ var require = {
     "underscore": "vendors/underscore",
     "mediator-js": "vendors/mediator",
     "text": "vendors/text",
+    "swiper": "vendors/swiper.jquery",
 
     // Events
-    "resize": "events/resize",
-    "accelerometer": "events/accelerometer",
-    "scroll": "events/scroll"
+    "resize": "events/resize"
+
 
   }
 

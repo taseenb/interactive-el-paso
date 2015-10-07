@@ -1,0 +1,15 @@
+<% items.forEach(function(item, i) { %>
+
+<div class="item <%= rollOver %>" data-id="<%= i %>">
+    <div class="open-item image">
+        <img class="normal" src="img/items/<%= item.img1 %>">
+        <img class="over" src="img/items/<%= item.img2 %>">
+
+        <img class="bg" src="img/items-bg.png">
+    </div>
+    <div class="open-item name">
+        <%= item.name %>
+    </div>
+</div>
+
+<% }); %>

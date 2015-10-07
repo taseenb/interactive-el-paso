@@ -3,3 +3,10 @@
 @import 'normalize';
 @import 'fonts';
 @import 'structure';
+
+// Breakpoints
+@import 'responsive/devices';
+@import 'responsive/main';
+
+// Swiper
+@import 'vendors/swiper';

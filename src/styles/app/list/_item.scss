@@ -1,0 +1,70 @@
+.item {
+
+  position: relative;
+  display: inline-block;
+  width: 46%;
+  margin: 2%;
+
+  @media(min-width: 740px) {
+    width: 16%;
+    margin: 2%;
+  }
+
+  &.roll-over:hover {
+    .image img {
+
+      &.normal {
+        opacity: 0;
+      }
+
+      &.over {
+        opacity: 1;
+      }
+
+    }
+  }
+
+  .image {
+    position: relative;
+    max-width: 100%;
+
+    img {
+
+      &.bg {
+        width: 100%;
+        position: relative;
+      }
+
+      &.normal {
+        position: absolute;
+        opacity: 1;
+        z-index: 2;
+      }
+
+      &.over {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 5;
+      }
+
+      &.normal,
+      &.over {
+        width: 85%;
+        top: 5%;
+        left: 5%;
+        @include css3-prefix(transition-property, opacity);
+        @include css3-prefix(transition-duration, 0.4s);
+      }
+    }
+  }
+
+  .name {
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Londrina Solid', sans-serif;
+    color: #cf4b1b;
+  }
+
+}
