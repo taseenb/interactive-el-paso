@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+body {
+  overflow: hidden;
+}
+
+@import 'app/debug';
+
+#main {
+
+  //  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  @import 'app/content';
+
+}
