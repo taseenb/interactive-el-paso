@@ -1,6 +1,21 @@
 #content {
 
+  @import 'intro';
   @import 'list';
   @import 'swiper';
+
+  position: relative;
+  height: 100%;
+
+  .content-element {
+    z-index: 10;
+    opacity: 1;
+    @include css3-prefix(transition-duration, 0.4s);
+
+    &.hidden {
+      z-index: -1000;
+      opacity: 0;
+    }
+  }
 
 }

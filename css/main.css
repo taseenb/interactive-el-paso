@@ -660,65 +660,96 @@ body {
       #main footer .pattern-wrapper .chili-top-right {
         right: 0;
         background-image: url("../img/chili-top-right.png"); }
-  #main #content #list {
-    padding: 25px;
+  #main #content {
     position: relative;
-    font-size: 0; }
-    #main #content #list .item {
+    height: 100%; }
+    #main #content #intro {
+      padding: 25px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box; }
+    #main #content #list {
+      padding: 25px;
       position: relative;
-      display: inline-block;
-      width: 46%;
-      margin: 2%; }
-      @media (min-width: 740px) {
-        #main #content #list .item {
-          width: 16%;
-          margin: 2%; } }
-      #main #content #list .item.roll-over:hover .image img.normal {
-        opacity: 0; }
-      #main #content #list .item.roll-over:hover .image img.over {
-        opacity: 1; }
-      #main #content #list .item .image {
+      font-size: 0; }
+      #main #content #list .item {
         position: relative;
-        max-width: 100%; }
-        #main #content #list .item .image img.bg {
-          width: 100%;
-          position: relative; }
-        #main #content #list .item .image img.normal {
-          position: absolute;
-          opacity: 1;
-          z-index: 2; }
-        #main #content #list .item .image img.over {
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          z-index: 5; }
-        #main #content #list .item .image img.normal,
-        #main #content #list .item .image img.over {
-          width: 85%;
-          top: 5%;
-          left: 5%;
-          -webkit-transition-property: opacity;
-          -khtml-transition-property: opacity;
-          -moz-transition-property: opacity;
-          -ms-transition-property: opacity;
-          -o-transition-property: opacity;
-          transition-property: opacity;
-          -webkit-transition-duration: 0.4s;
-          -khtml-transition-duration: 0.4s;
-          -moz-transition-duration: 0.4s;
-          -ms-transition-duration: 0.4s;
-          -o-transition-duration: 0.4s;
-          transition-duration: 0.4s; }
-      #main #content #list .item .name {
-        font-size: 20px;
-        text-align: center;
-        font-family: 'Londrina Solid', sans-serif;
-        color: #cf4b1b; }
-  #main #content #swiper {
-    display: none;
-    padding: 25px;
-    position: relative; }
+        display: inline-block;
+        width: 46%;
+        margin: 2%; }
+        @media (min-width: 740px) {
+          #main #content #list .item {
+            width: 16%;
+            margin: 2%; } }
+        #main #content #list .item.roll-over:hover .image img.normal {
+          opacity: 0; }
+        #main #content #list .item.roll-over:hover .image img.over {
+          opacity: 1; }
+        #main #content #list .item .image {
+          position: relative;
+          max-width: 100%; }
+          #main #content #list .item .image img.bg {
+            width: 100%;
+            position: relative; }
+          #main #content #list .item .image img.normal {
+            position: absolute;
+            opacity: 1;
+            z-index: 2; }
+          #main #content #list .item .image img.over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 5; }
+          #main #content #list .item .image img.normal,
+          #main #content #list .item .image img.over {
+            width: 85%;
+            top: 5%;
+            left: 5%;
+            -webkit-transition-property: opacity;
+            -khtml-transition-property: opacity;
+            -moz-transition-property: opacity;
+            -ms-transition-property: opacity;
+            -o-transition-property: opacity;
+            transition-property: opacity;
+            -webkit-transition-duration: 0.4s;
+            -khtml-transition-duration: 0.4s;
+            -moz-transition-duration: 0.4s;
+            -ms-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
+            transition-duration: 0.4s; }
+        #main #content #list .item .name {
+          font-size: 20px;
+          text-align: center;
+          font-family: 'Londrina Solid', sans-serif;
+          color: #cf4b1b; }
+    #main #content #swiper {
+      padding: 25px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box; }
+      #main #content #swiper .swiper-container {
+        position: relative;
+        width: 100%;
+        height: 100%; }
+    #main #content .content-element {
+      z-index: 10;
+      opacity: 1;
+      -webkit-transition-duration: 0.4s;
+      -khtml-transition-duration: 0.4s;
+      -moz-transition-duration: 0.4s;
+      -ms-transition-duration: 0.4s;
+      -o-transition-duration: 0.4s;
+      transition-duration: 0.4s; }
+      #main #content .content-element.hidden {
+        z-index: -1000;
+        opacity: 0; }
 
 .only-tablet,
 .only-above-tablet,

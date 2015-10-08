@@ -23,8 +23,27 @@ define( function ( require ) {
 
     render: function () {
 
-      var html = _.template( swiperTpl )();
+      var html = _.template( swiperTpl )({
+        copy: App.data.copy,
+        items: App.data.items
+      });
       this.$el.html( html );
+
+      this.swiper = new Swiper( this.$el.find( '.swiper-container' ), {
+        // Optional parameters
+        //direction: 'vertical',
+        //loop: true,
+
+        // If we need pagination
+        //pagination: '.swiper-pagination',
+
+        // Navigation arrows
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+
+        // And if we need scrollbar
+        //scrollbar: '.swiper-scrollbar'
+      } );
 
       this.setupElements();
       this.setupEvents();
@@ -35,14 +54,6 @@ define( function ( require ) {
 
       console.log( 'showin item ' + id );
 
-    },
-
-    show: function () {
-      this.$el.show();
-    },
-
-    hide: function () {
-      this.$el.hide();
     },
 
     setupElements: function () {
@@ -56,7 +67,7 @@ define( function ( require ) {
 
     },
 
-    backToList: function(e) {
+    backToList: function ( e ) {
 
       e.preventDefault();
       App.mainView.show( 'list' );

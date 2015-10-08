@@ -30,10 +30,12 @@ define( function ( require ) {
     render: function () {
 
       var html = '';
-      html += _.template( headerTpl )({
+      html += _.template( headerTpl )( {
+        copy: App.data.copy
+      } );
+      html += _.template( contentTpl )({
         copy: App.data.copy
       });
-      html += _.template( contentTpl )();
       html += _.template( footerTpl )();
       this.$el.html( html );
 
@@ -58,14 +60,34 @@ define( function ( require ) {
 
     show: function ( view ) {
 
-      if (view === 'list') {
-        App.listView.show();
-        App.swiperView.hide();
-      } else if (view === 'swiper' ) {
-        App.swiperView.show();
-        App.listView.hide();
+      if ( view === 'list' ) {
+        this.showView(App.listView);
+        this.hideView(App.swiperView);
+      } else if ( view === 'swiper' ) {
+        this.showView(App.swiperView);
+        this.hideView(App.listView);
       }
 
+    },
+
+    showView: function ( view ) {
+
+      view.$el.removeClass('hidden');
+      //TweenLite.to( view.$el, 0.4, {
+      //  opacity: 1, complete: function () {
+      //    view.$el.css( 'z-index', 10 );
+      //  }
+      //} );
+    },
+
+    hideView: function ( view ) {
+
+      view.$el.addClass('hidden');
+      //TweenLite.to( view.$el, 0.4, {
+      //  opacity: 0, complete: function () {
+      //    view.$el.css( 'z-index', -1 );
+      //  }
+      //} );
     },
 
     onResize: function ( e ) {

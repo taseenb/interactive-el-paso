@@ -73,14 +73,6 @@ define( function ( require ) {
 
     },
 
-    show: function () {
-      this.$el.show();
-    },
-
-    hide: function () {
-      this.$el.hide();
-    },
-
     onResize: function ( e ) {
 
       // console.log(e.width, e.height);

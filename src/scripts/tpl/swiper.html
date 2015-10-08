@@ -1,5 +1,22 @@
+<!-- Slider main container -->
+<div class="swiper-container">
 
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
 
-swiper items here (details)<br>
+        <% items.forEach(function(item, i) { %>
+            <div class="swiper-slide">
 
-<a href="#" class="back-to-list">back to list</a>
+                Slide <%= i %>
+
+            </div>
+        <% }); %>
+
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
