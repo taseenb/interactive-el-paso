@@ -23,16 +23,16 @@ define( function ( require ) {
 
     render: function () {
 
-      var html = _.template( swiperTpl )({
+      var html = _.template( swiperTpl )( {
         copy: App.data.copy,
         items: App.data.items
-      });
+      } );
       this.$el.html( html );
 
       this.swiper = new Swiper( this.$el.find( '.swiper-container' ), {
         // Optional parameters
         //direction: 'vertical',
-        //loop: true,
+        //loop: true, //
 
         // If we need pagination
         //pagination: '.swiper-pagination',
@@ -50,9 +50,13 @@ define( function ( require ) {
 
     },
 
-    goto: function ( id ) {
+    goto: function ( id, speed ) {
 
-      console.log( 'showin item ' + id );
+      //console.log( 'showin item ' + id );
+
+      $( 'body' ).scrollTop( 0 );
+      var duration = speed || 0;
+      this.swiper.slideTo( id, duration );
 
     },
 

@@ -4,9 +4,9 @@
 header,
 footer {
 
-  height: 100px;
   position: relative;
   font-size: 0;
+  height: 100px;
 
   .pattern-wrapper {
     box-sizing: border-box;
@@ -26,19 +26,19 @@ footer {
         position: absolute;
         width: 100%;
         font-size: 0;
-        top: 50%;
-        @include transform(translateY(-50%));
+        //top: 50%;
+        //@include transform(translateY(-50%));
         overflow: hidden;
         white-space: nowrap;
 
         img {
           position: relative;
           display: inline-block;
-          width: (100% / 7);
+          width: 10%; //(100% / 7);
 
-          @media(min-width: 660px) {
-            width: 10%;
-          }
+          //@media(min-width: 660px) {
+          //  width: (100% / 12);
+          //}
 
           @media(min-width: 980px) {
             width: 5%;

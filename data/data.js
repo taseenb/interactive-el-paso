@@ -40,7 +40,7 @@ callback( {
       name: "CORIANDER",
       img1: "coriander-1.jpg",
       img2: "coriander-2.jpg",
-      anim: "cheese.gif",
+      anim: "coriander.gif",
       "copy": {
         "history": "text copy text copy...",
         "tip": "text copy text copy..."

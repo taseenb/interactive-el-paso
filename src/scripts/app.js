@@ -18,7 +18,7 @@ define( function ( require ) {
   // Import Swiper
   App.swiper = require( 'swiper' );
 
-
+  // Get data and start main view
   $.ajax( {
     url: 'data/data.js',
     dataType: 'jsonp',

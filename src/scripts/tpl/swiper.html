@@ -1,3 +1,6 @@
+<img src="img/back-to-list.png" class="back-to-list">
+
+
 <!-- Slider main container -->
 <div class="swiper-container">
 
@@ -8,7 +11,30 @@
         <% items.forEach(function(item, i) { %>
             <div class="swiper-slide">
 
-                Slide <%= i %>
+                <!--Slide <%= i %>-->
+
+                <h1><%= item.name %></h1>
+
+                <div class="details-wrapper">
+
+                    <img src="img/animations/<%= item.anim %>" class="anim">
+
+                    <div class="details">
+
+                        <h2><%= copy['history-title'] %></h2>
+                        <p class="history-text">
+                            <%= item.copy.history %>
+                        </p>
+
+                        <h2><%= copy['tip-title'] %></h2>
+                        <p class="history-text">
+                            <%= item.copy.tip %>
+                        </p>
+
+                    </div>
+
+                </div>
+
 
             </div>
         <% }); %>

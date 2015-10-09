@@ -1,4 +1,4 @@
-/*! app / v0.0.1October 08, 2015 */
+/*! app / v0.0.1October 09, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -6222,10 +6222,10 @@ define('text',['module'], function (module) {
 });
 
 
-define('text!tpl/header.html',[],function () { return '<header>\n\n    <div class="pattern-wrapper">\n        <div class="chili chili-top-left">&nbsp;</div>\n\n        <div class="pattern-center-wrapper">\n            <div class="pattern-left">\n                <div class="img-wrapper">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                </div>\n            </div>\n            <div class="pattern-title">\n                <div class="title-wrapper">\n                    <%= copy.title %>\n                </div>\n            </div>\n            <div class="pattern-right">\n                <div class="img-wrapper">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                    <img src="img/border-pattern.png">\n                </div>\n            </div>\n        </div>\n        <div class="chili chili-top-right">&nbsp;</div>\n    </div>\n\n</header>';});
+define('text!tpl/header.html',[],function () { return '<header>\n\n    <div class="pattern-wrapper">\n        <div class="chili chili-top-left">&nbsp;</div>\n        <div class="pattern">\n\n            <div class="img-wrapper">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n            </div>\n\n        </div>\n        <div class="chili chili-top-right">&nbsp;</div>\n    </div>\n\n    <div class="title-wrapper">\n        <%= copy.title %>\n    </div>\n\n</header>\n\n';});
 
 
-define('text!tpl/content.html',[],function () { return '<div id="content">\n\n    <div id="intro" class="content-element hidden">\n\n        <p><%= copy[\'intro-text\'] %></p>\n\n    </div>\n\n    <div id="list" class="content-element">\n        list here\n    </div>\n\n    <div id="swiper" class="content-element hidden">\n        swiper here\n    </div>\n\n</div>';});
+define('text!tpl/content.html',[],function () { return '<div id="content">\n\n    <!--<div id="intro" class="content-element hidden">-->\n\n        <!--<p><%= copy[\'intro-text\'] %></p>-->\n\n    <!--</div>-->\n\n    <div id="list" class="content-element">\n        list here\n    </div>\n\n    <div id="swiper" class="content-element hidden">\n        swiper here\n    </div>\n\n</div>';});
 
 
 define('text!tpl/footer.html',[],function () { return '<footer>\n\n    <div class="pattern-wrapper">\n        <div class="chili chili-bottom-left">&nbsp;</div>\n        <div class="pattern">\n\n            <div class="img-wrapper">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n            </div>\n\n        </div>\n        <div class="chili chili-bottom-right">&nbsp;</div>\n    </div>\n\n</footer>';});
@@ -6234,7 +6234,7 @@ define('text!tpl/footer.html',[],function () { return '<footer>\n\n    <div clas
 define('text!tpl/list.html',[],function () { return '<% items.forEach(function(item, i) { %>\n\n<div class="item <%= rollOver %>" data-id="<%= i %>">\n    <div class="open-item image">\n        <img class="normal" src="img/items/<%= item.img1 %>">\n        <img class="over" src="img/items/<%= item.img2 %>">\n\n        <img class="bg" src="img/items-bg.png">\n    </div>\n    <div class="open-item name">\n        <%= item.name %>\n    </div>\n</div>\n\n<% }); %>';});
 
 
-define('text!tpl/swiper.html',[],function () { return '<!-- Slider main container -->\n<div class="swiper-container">\n\n    <!-- Additional required wrapper -->\n    <div class="swiper-wrapper">\n        <!-- Slides -->\n\n        <% items.forEach(function(item, i) { %>\n            <div class="swiper-slide">\n\n                Slide <%= i %>\n\n            </div>\n        <% }); %>\n\n    </div>\n\n    <!-- If we need navigation buttons -->\n    <div class="swiper-button-prev"></div>\n    <div class="swiper-button-next"></div>\n\n</div>';});
+define('text!tpl/swiper.html',[],function () { return '<img src="img/back-to-list.png" class="back-to-list">\n\n\n<!-- Slider main container -->\n<div class="swiper-container">\n\n    <!-- Additional required wrapper -->\n    <div class="swiper-wrapper">\n        <!-- Slides -->\n\n        <% items.forEach(function(item, i) { %>\n            <div class="swiper-slide">\n\n                <!--Slide <%= i %>-->\n\n                <h1><%= item.name %></h1>\n\n                <div class="details-wrapper">\n\n                    <img src="img/animations/<%= item.anim %>" class="anim">\n\n                    <div class="details">\n\n                        <h2><%= copy[\'history-title\'] %></h2>\n                        <p class="history-text">\n                            <%= item.copy.history %>\n                        </p>\n\n                        <h2><%= copy[\'tip-title\'] %></h2>\n                        <p class="history-text">\n                            <%= item.copy.tip %>\n                        </p>\n\n                    </div>\n\n                </div>\n\n\n            </div>\n        <% }); %>\n\n    </div>\n\n    <!-- If we need navigation buttons -->\n    <div class="swiper-button-prev"></div>\n    <div class="swiper-button-next"></div>\n\n</div>';});
 
 define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],function ( require ) {
 
@@ -6261,16 +6261,16 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     render: function () {
 
-      var html = _.template( swiperTpl )({
+      var html = _.template( swiperTpl )( {
         copy: App.data.copy,
         items: App.data.items
-      });
+      } );
       this.$el.html( html );
 
       this.swiper = new Swiper( this.$el.find( '.swiper-container' ), {
         // Optional parameters
         //direction: 'vertical',
-        //loop: true,
+        //loop: true, //
 
         // If we need pagination
         //pagination: '.swiper-pagination',
@@ -6288,9 +6288,13 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     },
 
-    goto: function ( id ) {
+    goto: function ( id, speed ) {
 
-      console.log( 'showin item ' + id );
+      //console.log( 'showin item ' + id );
+
+      $( 'body' ).scrollTop( 0 );
+      var duration = speed || 0;
+      this.swiper.slideTo( id, duration );
 
     },
 
@@ -6531,7 +6535,7 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
   // Import Swiper
   App.swiper = require( 'swiper' );
 
-
+  // Get data and start main view
   $.ajax( {
     url: 'data/data.js',
     dataType: 'jsonp',

@@ -515,80 +515,97 @@ body {
 #main {
   position: relative;
   width: 100%; }
-  #main header .pattern-wrapper .pattern-center-wrapper {
-    position: relative;
-    height: 100%;
-    font-size: 0; }
-    @media (min-width: 740px) {
-      #main header .pattern-wrapper .pattern-center-wrapper {
-        margin: 0 100px; } }
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-left,
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-title,
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
+  #main header {
+    height: auto !important; }
+    #main header .title-wrapper {
+      width: 100%;
       position: relative;
-      height: 100%;
-      display: inline-block;
-      vertical-align: top; }
-      #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper,
-      #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper,
-      #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper {
-        position: absolute;
-        width: 100%;
-        font-size: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -khtml-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-        overflow: hidden;
-        white-space: nowrap; }
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-          position: relative;
-          display: inline-block;
-          width: 50%; }
-          @media (min-width: 660px) {
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-              width: 33%; } }
-          @media (min-width: 980px) {
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-              width: 20%; } }
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-left {
-      width: 20%;
-      overflow: hidden;
-      text-align: left; }
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-title {
-      width: 60%;
-      font-size: 16px;
+      text-align: center;
+      font-size: 20px;
+      opacity: 0.9;
       color: #FFF;
-      font-family: 'Londrina Solid', sans-serif; }
-      #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .title-wrapper {
-        width: 100%;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -khtml-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%); }
-    #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
-      width: 20%;
-      overflow: hidden;
-      text-align: right; }
+      font-family: 'Londrina Solid', sans-serif;
+      letter-spacing: 0.5px; }
+    #main header .pattern-wrapper {
+      height: 100px !important; }
+      #main header .pattern-wrapper .pattern .img-wrapper {
+        top: 16px; }
+      #main header .pattern-wrapper .pattern-center-wrapper {
+        position: relative;
+        height: 100%;
+        font-size: 0; }
+        @media (min-width: 740px) {
+          #main header .pattern-wrapper .pattern-center-wrapper {
+            margin: 0 100px; } }
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-left,
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-title,
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
+          position: relative;
+          height: 100%;
+          display: inline-block;
+          vertical-align: top; }
+          #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper,
+          #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper,
+          #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper {
+            position: absolute;
+            width: 100%;
+            font-size: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -khtml-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            overflow: hidden;
+            white-space: nowrap; }
+            #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
+            #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
+            #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
+              position: relative;
+              display: inline-block;
+              width: 50%; }
+              @media (min-width: 660px) {
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
+                  width: 33%; } }
+              @media (min-width: 980px) {
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
+                #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
+                  width: 20%; } }
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-left {
+          width: 20%;
+          overflow: hidden;
+          text-align: left; }
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-title {
+          width: 60%;
+          font-size: 16px;
+          color: #FFF;
+          font-family: 'Londrina Solid', sans-serif; }
+          #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .title-wrapper {
+            width: 100%;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -khtml-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%); }
+        #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
+          width: 20%;
+          overflow: hidden;
+          text-align: right; }
+  #main footer .pattern-wrapper .pattern .img-wrapper {
+    bottom: 16px; }
   #main header,
   #main footer {
-    height: 100px;
     position: relative;
-    font-size: 0; }
+    font-size: 0;
+    height: 100px; }
     #main header .pattern-wrapper,
     #main footer .pattern-wrapper {
       box-sizing: border-box;
@@ -608,24 +625,13 @@ body {
           position: absolute;
           width: 100%;
           font-size: 0;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          -khtml-transform: translateY(-50%);
-          -moz-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-          -o-transform: translateY(-50%);
-          transform: translateY(-50%);
           overflow: hidden;
           white-space: nowrap; }
           #main header .pattern-wrapper .pattern .img-wrapper img,
           #main footer .pattern-wrapper .pattern .img-wrapper img {
             position: relative;
             display: inline-block;
-            width: 14.2857142857%; }
-            @media (min-width: 660px) {
-              #main header .pattern-wrapper .pattern .img-wrapper img,
-              #main footer .pattern-wrapper .pattern .img-wrapper img {
-                width: 10%; } }
+            width: 10%; }
             @media (min-width: 980px) {
               #main header .pattern-wrapper .pattern .img-wrapper img,
               #main footer .pattern-wrapper .pattern .img-wrapper img {
@@ -676,6 +682,7 @@ body {
       position: relative;
       font-size: 0; }
       #main #content #list .item {
+        cursor: pointer;
         position: relative;
         display: inline-block;
         width: 46%;
@@ -727,17 +734,58 @@ body {
           font-family: 'Londrina Solid', sans-serif;
           color: #cf4b1b; }
     #main #content #swiper {
-      padding: 25px;
+      padding: 0 25px;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       box-sizing: border-box; }
+      #main #content #swiper .back-to-list {
+        position: absolute;
+        top: 0px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        z-index: 100;
+        cursor: pointer; }
       #main #content #swiper .swiper-container {
         position: relative;
         width: 100%;
-        height: 100%; }
+        height: 100%;
+        box-sizing: border-box;
+        padding: 25px 0; }
+        #main #content #swiper .swiper-container .swiper-wrapper {
+          padding: 0 47px; }
+        #main #content #swiper .swiper-container .swiper-slide {
+          font-size: 0; }
+          #main #content #swiper .swiper-container .swiper-slide h1 {
+            font-size: 18px;
+            height: 30px;
+            position: relative;
+            padding: 0;
+            margin: 0; }
+          #main #content #swiper .swiper-container .swiper-slide .details-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 30px;
+            white-space: nowrap; }
+            #main #content #swiper .swiper-container .swiper-slide .details-wrapper .anim,
+            #main #content #swiper .swiper-container .swiper-slide .details-wrapper .details {
+              position: relative;
+              display: inline-block;
+              vertical-align: top; }
+            #main #content #swiper .swiper-container .swiper-slide .details-wrapper .anim {
+              max-height: 100%;
+              position: relative;
+              margin-right: 25px; }
+            #main #content #swiper .swiper-container .swiper-slide .details-wrapper .details {
+              font-size: 14px; }
+              #main #content #swiper .swiper-container .swiper-slide .details-wrapper .details h2 {
+                font-size: 18px; }
     #main #content .content-element {
       z-index: 10;
       opacity: 1;

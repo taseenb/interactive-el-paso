@@ -1,6 +1,25 @@
 header {
+  height: auto !important;
+
+  .title-wrapper {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.9;
+    color: #FFF;
+    font-family: 'Londrina Solid', sans-serif;
+    letter-spacing: 0.5px;
+  }
 
   .pattern-wrapper {
+    height: 100px !important;
+
+    .pattern {
+      .img-wrapper {
+        top: 16px;
+      }
+    }
 
     .pattern-center-wrapper {
       position: relative;
