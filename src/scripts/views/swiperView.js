@@ -129,8 +129,6 @@ define( function ( require ) {
 
       //console.log( e.width, e.height );
 
-      // Only mobile screen
-      //if ( App.width < 741 ) {
 
       var titleHeight = this.$slideH1.outerHeight( true );
       var animHeight = this.$animImage.outerHeight( true );
@@ -142,9 +140,9 @@ define( function ( require ) {
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
 
-      if ( this.swiper )
+      if ( this.swiper ) {
         this.swiper.update();
-      //}
+      }
 
     }
 
