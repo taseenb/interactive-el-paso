@@ -6246,7 +6246,7 @@ define('text!tpl/footer.html',[],function () { return '<footer>\n\n    <div clas
 define('text!tpl/list.html',[],function () { return '<div class="title-wrapper">\n    <%= copy.title %>\n</div>\n\n<% items.forEach(function(item, i) { %>\n\n<div class="item <%= rollOver %>" data-id="<%= i %>">\n    <div class="open-item image">\n        <img class="normal" src="img/items/<%= item.img1 %>">\n        <img class="over" src="img/items/<%= item.img2 %>">\n\n        <img class="bg" src="img/items-bg.png">\n    </div>\n    <div class="open-item name">\n        <%= item.name %>\n    </div>\n</div>\n\n<% }); %>';});
 
 
-define('text!tpl/swiper.html',[],function () { return '<img src="img/back-to-list.png" class="back-to-list only-tablet-and-above">\n\n<!-- Slider main container -->\n<div class="swiper-container">\n\n    <!-- Additional required wrapper -->\n    <div class="swiper-wrapper">\n        <!-- Slides -->\n\n        <% items.forEach(function(item, i) { %>\n        <div class="swiper-slide">\n\n            <h1><span><%= item.name %></span></h1>\n\n            <div class="details-wrapper">\n\n                <div class="anim">\n                    <img src="img/animations/<%= item.anim %>" class="anim-img">\n\n                    <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">\n                </div>\n\n\n                <div class="details">\n\n                    <h2><%= copy[\'history-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.history %>\n                    </p>\n\n                    <h2><%= copy[\'tip-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.tip %>\n                    </p>\n\n                </div>\n\n            </div>\n\n\n        </div>\n        <% }); %>\n\n    </div>\n\n    <!-- If we need navigation buttons -->\n    <div class="swiper-button-prev" class="arrow only-tablet-and-above"></div>\n    <div class="swiper-button-next" class="arrow only-tablet-and-above"></div>\n\n\n    <div class="mobile-nav only-mobile slide-nav-ui">\n\n        <div class="arrow swiper-button-prev hidden"></div>\n        <div class="arrow swiper-button-next hidden"></div>\n\n    </div>\n\n\n</div>\n\n\n';});
+define('text!tpl/swiper.html',[],function () { return '<!--<img src="img/back-to-list.png" class="back-to-list only-mobile">-->\n\n<!-- Slider main container -->\n<div class="swiper-container">\n\n    <!-- Additional required wrapper -->\n    <div class="swiper-wrapper">\n        <!-- Slides -->\n\n        <% items.forEach(function(item, i) { %>\n        <div class="swiper-slide">\n\n            <div class="h1-wrapper">\n                <img src="img/back-to-list.png" class="back-to-list only-tablet-and-above">\n                <h1>\n                    <span><%= item.name %></span>\n                </h1>\n            </div>\n\n            <div class="details-wrapper">\n\n                <div class="anim">\n                    <img src="img/animations/<%= item.anim %>" class="anim-img">\n\n                    <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">\n                </div>\n\n\n                <div class="details">\n\n                    <h2><%= copy[\'history-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.history %>\n                    </p>\n\n                    <h2><%= copy[\'tip-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.tip %>\n                    </p>\n\n                </div>\n\n            </div>\n\n\n        </div>\n        <% }); %>\n\n    </div>\n\n    <!-- If we need navigation buttons -->\n    <div class="swiper-button-prev" class="arrow only-tablet-and-above"></div>\n    <div class="swiper-button-next" class="arrow only-tablet-and-above"></div>\n\n\n    <div class="mobile-nav only-mobile slide-nav-ui">\n\n        <div class="arrow swiper-button-prev hidden"></div>\n        <div class="arrow swiper-button-next hidden"></div>\n\n    </div>\n\n\n</div>\n\n\n';});
 
 define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],function ( require ) {
 
@@ -6347,6 +6347,14 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     },
 
+    onShow: function() {
+      //this.onResize();
+    },
+
+    onHide: function() {
+
+    },
+
     onResize: function ( e ) {
 
       //console.log( e.width, e.height );
@@ -6361,7 +6369,9 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
       //console.log( titleHeight, animHeight );
-
+      //if (this.swiper) {
+      //  this.swiper.update();
+      //}
     }
 
   };
@@ -6441,7 +6451,17 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
         App.mainView.show( 'swiper' );
       }
 
+      window.scrollTo( 0, 0 );
+
       this.currentItem = id;
+
+    },
+
+    onShow: function() {
+
+    },
+
+    onHide: function() {
 
     },
 
@@ -6531,9 +6551,14 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
     showView: function ( view ) {
 
       view.$el.removeClass('hidden');
+      view.onShow();
+
+      //view.$el.show();
+
       //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 1, complete: function () {
-      //    view.$el.css( 'z-index', 10 );
+      //  opacity: 1,
+      //  complete: function () {
+      //    //view.$el.css( 'z-index', 10 );
       //  }
       //} );
     },
@@ -6541,9 +6566,13 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
     hideView: function ( view ) {
 
       view.$el.addClass('hidden');
+      view.onHide();
+
       //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 0, complete: function () {
-      //    view.$el.css( 'z-index', -1 );
+      //  opacity: 0,
+      //  complete: function () {
+      //    //view.$el.css( 'z-index', -1 );
+      //    view.$el.hide();
       //  }
       //} );
     },

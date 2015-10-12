@@ -73,9 +73,14 @@ define( function ( require ) {
     showView: function ( view ) {
 
       view.$el.removeClass('hidden');
+      view.onShow();
+
+      //view.$el.show();
+
       //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 1, complete: function () {
-      //    view.$el.css( 'z-index', 10 );
+      //  opacity: 1,
+      //  complete: function () {
+      //    //view.$el.css( 'z-index', 10 );
       //  }
       //} );
     },
@@ -83,9 +88,13 @@ define( function ( require ) {
     hideView: function ( view ) {
 
       view.$el.addClass('hidden');
+      view.onHide();
+
       //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 0, complete: function () {
-      //    view.$el.css( 'z-index', -1 );
+      //  opacity: 0,
+      //  complete: function () {
+      //    //view.$el.css( 'z-index', -1 );
+      //    view.$el.hide();
       //  }
       //} );
     },

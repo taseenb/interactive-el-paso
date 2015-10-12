@@ -97,6 +97,14 @@ define( function ( require ) {
 
     },
 
+    onShow: function() {
+      //this.onResize();
+    },
+
+    onHide: function() {
+
+    },
+
     onResize: function ( e ) {
 
       //console.log( e.width, e.height );
@@ -111,7 +119,9 @@ define( function ( require ) {
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
       //console.log( titleHeight, animHeight );
-
+      //if (this.swiper) {
+      //  this.swiper.update();
+      //}
     }
 
   };

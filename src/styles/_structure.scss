@@ -20,6 +20,8 @@ body {
   position: relative;
   width: 100%;
 
+  font-family: "Guardian sans", sans-serif;
+
   @import 'app/header_footer';
   @import 'app/content';
 

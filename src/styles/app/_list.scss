@@ -4,6 +4,9 @@
   position: relative;
   font-size: 0;
 
+  @media(min-width: 740px) {
+    padding: 0 25px;
+  }
 
   .title-wrapper {
     width: 100%;

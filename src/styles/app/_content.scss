@@ -11,10 +11,17 @@
     z-index: 10;
     opacity: 1;
     @include css3-prefix(transition-duration, 0.4s);
+    @include css3-prefix(transition-property, opacity);
+    overflow: hidden;
+    height: auto;
 
     &.hidden {
       z-index: -1000;
       opacity: 0;
+      //display: none; //
+      height: 0px;
+      padding: 0 !important;
+      margin: 0 !important;
     }
   }
 

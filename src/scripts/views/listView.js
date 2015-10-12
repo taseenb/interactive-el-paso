@@ -70,7 +70,17 @@ define( function ( require ) {
         App.mainView.show( 'swiper' );
       }
 
+      window.scrollTo( 0, 0 );
+
       this.currentItem = id;
+
+    },
+
+    onShow: function() {
+
+    },
+
+    onHide: function() {
 
     },
 
