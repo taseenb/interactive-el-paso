@@ -9,5 +9,5 @@ The `gh-pages` branch should always mirror the `master`. You can push to both br
 
 ```
   push = refs/heads/master:refs/heads/master
-	push = refs/heads/master:refs/heads/gh-pages
+  push = refs/heads/master:refs/heads/gh-pages
 ```
