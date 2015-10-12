@@ -2,7 +2,7 @@
 The Guardian - El Paso
 
 
-## Pushing your commits to master and gh-pages
+## Pushing your commits to `master` and `gh-pages`
 
 The `gh-pages` branch should always mirror the `master`. You can push to both branches manually or you can configure your hidden `.git/config` file to automatically push to both branches.
  You can do this simply by adding these 2 lines to the `[remote "origin"]` section:
