@@ -6303,7 +6303,10 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.setupEvents();
 
       // set sizes
-      this.onResize();
+      setTimeout(function() {
+        this.onResize();
+      }.bind(this), 250);
+
 
     },
 
@@ -6311,9 +6314,17 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       //console.log( 'showin item ' + id );
 
-      $( 'body' ).scrollTop( 0 );
-      var duration = speed || 0;
-      this.swiper.slideTo( id, duration );
+      if (this.imagesLoaded) {
+
+        $( 'body' ).scrollTop( 0 );
+        var duration = speed || 0;
+        this.swiper.slideTo( id, duration );
+
+      } else {
+
+        this.onResize();
+
+      }
 
     },
 
@@ -6322,11 +6333,13 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.$slides = this.$el.find( '.swiper-slide' );
 
       this.$mobileNav = this.$el.find( '.mobile-nav' );
-      this.$prevNextArrows = this.$mobileNav.find('.arrow');
+      this.$prevNextArrows = this.$mobileNav.find( '.arrow' );
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
       this.$detailsWrapper = this.$slides.find( '.details-wrapper' ).first();
-      this.$animImage = this.$detailsWrapper.find( '.anim-img' );
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
+
+      //console.log( this.$animImage );
 
     },
 
@@ -6336,7 +6349,14 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.$el.on( event, '.back-to-list', this.backToList.bind( this ) );
 
       // Update image size on load
-      this.$animImage.on( 'load', this.onResize.bind( this ) );
+      this.$animImage.on( 'load', function ( e ) {
+
+        this.onResize();
+        console.log( e );
+
+        this.imagesLoaded = true;
+
+      }.bind( this ) );
 
     },
 
@@ -6347,11 +6367,11 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     },
 
-    onShow: function() {
-      //this.onResize();
+    onShow: function () {
+
     },
 
-    onHide: function() {
+    onHide: function () {
 
     },
 
@@ -6359,19 +6379,23 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       //console.log( e.width, e.height );
 
+      // Only mobile screen
+      //if ( App.width < 741 ) {
+
       var titleHeight = this.$slideH1.outerHeight( true );
       var animHeight = this.$animImage.outerHeight( true );
 
-      if (animHeight > 0) {
-        this.$prevNextArrows.removeClass('hidden');
+      if ( animHeight > 0 ) {
+        this.$prevNextArrows.removeClass( 'hidden' );
       }
 
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
-      //console.log( titleHeight, animHeight );
-      //if (this.swiper) {
-      //  this.swiper.update();
+
+      if ( this.swiper )
+        this.swiper.update();
       //}
+
     }
 
   };
