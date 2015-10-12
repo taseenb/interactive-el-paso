@@ -13,7 +13,10 @@ define( function ( require ) {
 
   // Global Events - pub/sub
   App.mediator = new Mediator();
-  require( 'resize' );
+
+  // Resize event
+  var resizeEvent = require( 'resize' );
+  resizeEvent.initialize();
 
   // Import Swiper
   App.swiper = require( 'swiper' );
@@ -26,14 +29,15 @@ define( function ( require ) {
     success: function ( data ) {
       App.data = data;
 
-      console.log(data);
+      console.log( data );
+      //console.log( App.width, App.height );
 
       // Main view
       var MainView = require( 'views/mainView.js' );
       App.mainView = new MainView( '#main' );
       App.mainView.render();
     }
-  });
+  } );
 
 
 } );

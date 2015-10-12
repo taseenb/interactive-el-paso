@@ -5,6 +5,20 @@
   font-size: 0;
 
 
+  .title-wrapper {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.9;
+    color: #FFF;
+    font-family: 'Londrina Solid', sans-serif;
+    letter-spacing: 0.5px;
+
+    padding: 0 0 20px 0;
+  }
+
+
   @import 'list/item';
 
 }

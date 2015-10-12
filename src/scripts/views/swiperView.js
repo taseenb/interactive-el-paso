@@ -11,6 +11,7 @@ define( function ( require ) {
     this.el = this.$el[0];
 
     this.initialize();
+
   };
 
   View.prototype = {
@@ -34,6 +35,8 @@ define( function ( require ) {
         //direction: 'vertical',
         //loop: true, //
 
+        spaceBetween: 50,
+
         // If we need pagination
         //pagination: '.swiper-pagination',
 
@@ -45,8 +48,12 @@ define( function ( require ) {
         //scrollbar: '.swiper-scrollbar'
       } );
 
+
       this.setupElements();
       this.setupEvents();
+
+      // set sizes
+      this.onResize();
 
     },
 
@@ -62,12 +69,24 @@ define( function ( require ) {
 
     setupElements: function () {
 
+      this.$slides = this.$el.find( '.swiper-slide' );
+
+      this.$mobileNav = this.$el.find( '.mobile-nav' );
+      this.$prevNextArrows = this.$mobileNav.find('.arrow');
+
+      this.$slideH1 = this.$slides.find( 'h1' ).first();
+      this.$detailsWrapper = this.$slides.find( '.details-wrapper' ).first();
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' );
+
     },
 
     setupEvents: function () {
 
       var event = App.isTouch ? 'touchstart' : 'click';
       this.$el.on( event, '.back-to-list', this.backToList.bind( this ) );
+
+      // Update image size on load
+      this.$animImage.on( 'load', this.onResize.bind( this ) );
 
     },
 
@@ -80,7 +99,18 @@ define( function ( require ) {
 
     onResize: function ( e ) {
 
-      // console.log(e.width, e.height);
+      //console.log( e.width, e.height );
+
+      var titleHeight = this.$slideH1.outerHeight( true );
+      var animHeight = this.$animImage.outerHeight( true );
+
+      if (animHeight > 0) {
+        this.$prevNextArrows.removeClass('hidden');
+      }
+
+      this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
+
+      //console.log( titleHeight, animHeight );
 
     }
 

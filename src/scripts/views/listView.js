@@ -30,6 +30,7 @@ define( function ( require ) {
     render: function () {
 
       var html = _.template( listTpl )( {
+        copy: App.data.copy,
         items: App.data.items,
         rollOver: App.isTouch ? '' : 'roll-over'
       } );
@@ -56,7 +57,7 @@ define( function ( require ) {
 
       var id = parseInt( $( e.target ).closest( '.item' ).data( 'id' ) );
 
-      if ( !this.swiperView ) {
+      if ( !App.swiperView ) {
         // Create swiper view
         App.swiperView = new SwiperView( '#swiper' );
         App.swiperView.render();

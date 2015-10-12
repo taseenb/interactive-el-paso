@@ -1,5 +1,4 @@
-<img src="img/back-to-list.png" class="back-to-list">
-
+<img src="img/back-to-list.png" class="back-to-list only-tablet-and-above">
 
 <!-- Slider main container -->
 <div class="swiper-container">
@@ -9,40 +8,56 @@
         <!-- Slides -->
 
         <% items.forEach(function(item, i) { %>
-            <div class="swiper-slide">
+        <div class="swiper-slide">
 
-                <!--Slide <%= i %>-->
+            <h1><span><%= item.name %></span></h1>
 
-                <h1><%= item.name %></h1>
+            <div class="details-wrapper">
 
-                <div class="details-wrapper">
+                <div class="anim">
+                    <img src="img/animations/<%= item.anim %>" class="anim-img">
 
-                    <img src="img/animations/<%= item.anim %>" class="anim">
-
-                    <div class="details">
-
-                        <h2><%= copy['history-title'] %></h2>
-                        <p class="history-text">
-                            <%= item.copy.history %>
-                        </p>
-
-                        <h2><%= copy['tip-title'] %></h2>
-                        <p class="history-text">
-                            <%= item.copy.tip %>
-                        </p>
-
-                    </div>
-
+                    <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">
                 </div>
 
 
+                <div class="details">
+
+                    <h2><%= copy['history-title'] %></h2>
+
+                    <p class="history-text">
+                        <%= item.copy.history %>
+                    </p>
+
+                    <h2><%= copy['tip-title'] %></h2>
+
+                    <p class="history-text">
+                        <%= item.copy.tip %>
+                    </p>
+
+                </div>
+
             </div>
+
+
+        </div>
         <% }); %>
 
     </div>
 
     <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev" class="arrow only-tablet-and-above"></div>
+    <div class="swiper-button-next" class="arrow only-tablet-and-above"></div>
+
+
+    <div class="mobile-nav only-mobile slide-nav-ui">
+
+        <div class="arrow swiper-button-prev hidden"></div>
+        <div class="arrow swiper-button-next hidden"></div>
+
+    </div>
+
 
 </div>
+
+

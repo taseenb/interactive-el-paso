@@ -1,5 +1,5 @@
 
-$tablet: 'only screen and (min-width : 740px) and (max-width : 980px)';
+$tablet: 'only screen and (min-width : 740px) and (max-width : 979px)';
 $above-tablet: 'only screen and (min-width : 980px)';
 
 
@@ -8,6 +8,7 @@ $above-tablet: 'only screen and (min-width : 980px)';
 .only-tablet-and-above {
   display: none;
 }
+
 
 @media #{$tablet} {
   .only-mobile,
@@ -20,6 +21,7 @@ $above-tablet: 'only screen and (min-width : 980px)';
     display: block;
   }
 }
+
 
 @media #{$above-tablet} {
   .only-mobile,
