@@ -52,6 +52,7 @@ module.exports = function ( grunt ) {
       }
     },
     requirejs: {
+
       unmin: {
         options: {
           baseUrl: 'scripts',
@@ -91,7 +92,50 @@ module.exports = function ( grunt ) {
 //          insertRequire: ['app']
 //        }
 //      }
+    },
 
+    gitadd: {
+
+      pages: {
+        options: {
+          all: true
+        },
+        files: {
+          cwd: "../",
+          src: ['**/*']
+        }
+      }
+
+    },
+
+    gitcommit: {
+
+      pages: {
+        options: {
+          // Target-specific options go here.
+        },
+        files: {
+          cwd: "../",
+          src: ['**/*']
+        }
+      }
+
+    },
+
+    //gitcheckout: {
+    //  pages: {
+    //    options: {
+    //      branch: 'gh-pages'
+    //    }
+    //  }
+    //},
+
+    gitpush: {
+      pages: {
+        options: {
+          branch: 'gh-pages'
+        }
+      }
     }
 
   } );
@@ -102,8 +146,14 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-connect' );
 //  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks( 'grunt-sass' ); // faster c++ sass compiler
+  grunt.loadNpmTasks( 'grunt-git' );
+
+
+  // Update gh-pages branch to update the page at: http://taseenb.github.io/interactive-el-paso/
+  grunt.registerTask( 'pages', ['gitadd', 'gitcommit', 'gitpush'] );
 
   grunt.registerTask( 'build', ['jshint', 'requirejs', 'sass'] );
+
   grunt.registerTask( 'default', ['build', 'connect', 'watch'] );
 
 };
