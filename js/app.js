@@ -6289,6 +6289,10 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
 
+        onSlideChangeEnd: function ( swiper ) {
+          App.currentItem = swiper.activeIndex;
+        }
+
         // And if we need scrollbar
         //scrollbar: '.swiper-scrollbar'
       } );
@@ -6428,7 +6432,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
-      this.currentItem = 0;
+      App.currentItem = 0;
 
     },
 
@@ -6469,7 +6473,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
         App.swiperView.render();
       }
 
-      if ( this.currentItem !== id ) {
+      if ( App.currentItem !== id ) {
         App.swiperView.goto( id );
         App.mainView.show( 'swiper' );
       } else {
@@ -6478,7 +6482,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
 
       window.scrollTo( 0, 0 );
 
-      this.currentItem = id;
+      App.currentItem = id;
 
     },
 

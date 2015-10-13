@@ -23,7 +23,7 @@ define( function ( require ) {
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
-      this.currentItem = 0;
+      App.currentItem = 0;
 
     },
 
@@ -64,7 +64,7 @@ define( function ( require ) {
         App.swiperView.render();
       }
 
-      if ( this.currentItem !== id ) {
+      if ( App.currentItem !== id ) {
         App.swiperView.goto( id );
         App.mainView.show( 'swiper' );
       } else {
@@ -73,7 +73,7 @@ define( function ( require ) {
 
       window.scrollTo( 0, 0 );
 
-      this.currentItem = id;
+      App.currentItem = id;
 
     },
 

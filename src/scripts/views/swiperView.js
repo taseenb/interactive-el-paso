@@ -45,6 +45,10 @@ define( function ( require ) {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
 
+        onSlideChangeEnd: function ( swiper ) {
+          App.currentItem = swiper.activeIndex;
+        }
+
         // And if we need scrollbar
         //scrollbar: '.swiper-scrollbar'
       } );
