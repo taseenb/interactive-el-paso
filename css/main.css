@@ -1159,6 +1159,7 @@ body {
         cursor: pointer;
         position: relative;
         display: inline-block;
+        vertical-align: top;
         width: 46%;
         margin: 2%; }
         @media (min-width: 740px) {
