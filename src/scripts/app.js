@@ -7,16 +7,16 @@ define( function ( require ) {
   // Create App global
   window.App = window.App || {};
 
-  // Touch
-  App.isTouch = $( 'html' ).hasClass( 'touch' );
-  //  console.log( 'touch', App.isTouch );
-
   // Global Events - pub/sub
   App.mediator = new Mediator();
 
   // Resize event
   var resizeEvent = require( 'resize' );
   resizeEvent.initialize();
+
+  // Device
+  App.isTouch = $( 'html' ).hasClass( 'touch' );
+  App.isPhone = App.isTouch && (App.width < 481 || App.height < 481);
 
   // Import Swiper
   App.swiper = require( 'swiper' );

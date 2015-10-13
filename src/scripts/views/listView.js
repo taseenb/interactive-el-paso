@@ -32,7 +32,8 @@ define( function ( require ) {
       var html = _.template( listTpl )( {
         copy: App.data.copy,
         items: App.data.items,
-        rollOver: App.isTouch ? '' : 'roll-over'
+        rollOver: App.isTouch ? '' : 'roll-over',
+        isTouch: App.isTouch
       } );
       this.$el.html( html );
 
