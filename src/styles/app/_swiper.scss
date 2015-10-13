@@ -147,7 +147,7 @@
 
     .swiper-wrapper {
       @media(min-width: 740px) {
-        padding: 0 47px;
+        padding: 0 (47px + 30px);
       }
     }
 
@@ -262,7 +262,7 @@
           @media(min-width: 740px) {
             width: 50%;
             padding-right: 50px;
-            max-width: 450px;
+            max-width: 550px;
           }
 
           h2 {

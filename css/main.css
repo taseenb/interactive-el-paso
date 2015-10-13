@@ -1405,7 +1405,7 @@ body {
         box-sizing: border-box; }
         @media (min-width: 740px) {
           #main #content #swiper .swiper-container .swiper-wrapper {
-            padding: 0 47px; } }
+            padding: 0 77px; } }
         #main #content #swiper .swiper-container .swiper-slide {
           font-size: 0;
           position: relative; }
@@ -1492,7 +1492,7 @@ body {
                 #main #content #swiper .swiper-container .swiper-slide .details-wrapper .details {
                   width: 50%;
                   padding-right: 50px;
-                  max-width: 450px; } }
+                  max-width: 550px; } }
               #main #content #swiper .swiper-container .swiper-slide .details-wrapper .details h2 {
                 font-size: 26px;
                 font-family: 'Londrina Solid', sans-serif;
