@@ -1092,6 +1092,10 @@ body {
               #main header .pattern-wrapper .pattern .img-wrapper img,
               #main footer .pattern-wrapper .pattern .img-wrapper img {
                 width: 5%; } }
+            @media (min-width: 1140px) {
+              #main header .pattern-wrapper .pattern .img-wrapper img,
+              #main footer .pattern-wrapper .pattern .img-wrapper img {
+                width: 2.5%; } }
       #main header .pattern-wrapper .chili,
       #main footer .pattern-wrapper .chili {
         display: none; }

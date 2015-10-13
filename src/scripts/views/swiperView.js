@@ -38,6 +38,8 @@ define( function ( require ) {
 
         spaceBetween: 50,
 
+        loop: true,
+
         // If we need pagination
         //pagination: '.swiper-pagination',
 
