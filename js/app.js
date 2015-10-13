@@ -6228,7 +6228,7 @@ define('text',['module'], function (module) {
 });
 
 
-define('text!tpl/header.html',[],function () { return '<header>\n\n    <div class="pattern-wrapper">\n        <div class="chili chili-top-left">&nbsp;</div>\n        <div class="pattern">\n\n            <div class="img-wrapper">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n            </div>\n\n        </div>\n        <div class="chili chili-top-right">&nbsp;</div>\n    </div>\n\n</header>\n\n';});
+define('text!tpl/header.html',[],function () { return '<header>\n\n    <div class="pattern-wrapper">\n\n        <div class="chili chili-top-left">&nbsp;</div>\n\n        <div class="pattern">\n            <div class="img-wrapper">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n                <img src="img/border-pattern.png">\n            </div>\n        </div>\n\n        <div class="chili chili-top-right">&nbsp;</div>\n\n    </div>\n\n</header>\n\n';});
 
 
 define('text!tpl/content.html',[],function () { return '<div id="content">\n\n    <!--<div id="intro" class="content-element hidden">-->\n\n        <!--<p><%= copy[\'intro-text\'] %></p>-->\n\n    <!--</div>-->\n\n    <div id="list" class="content-element">\n        list here\n    </div>\n\n    <div id="swiper" class="content-element hidden">\n        swiper here\n    </div>\n\n</div>';});
@@ -6297,9 +6297,9 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.setupEvents();
 
       // set sizes
-      setTimeout(function() {
+      setTimeout( function () {
         this.onResize();
-      }.bind(this), 250);
+      }.bind( this ), 250 );
 
 
     },
@@ -6308,7 +6308,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       //console.log( 'showin item ' + id );
 
-      if (this.imagesLoaded) {
+      if ( this.imagesLoaded ) {
 
         $( 'body' ).scrollTop( 0 );
         var duration = speed || 0;

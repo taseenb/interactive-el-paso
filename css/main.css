@@ -1043,124 +1043,52 @@ body {
 #main {
   position: relative;
   width: 100%; }
-  #main header {
-    height: auto !important; }
-    #main header .pattern-wrapper {
-      height: 50px !important; }
-      @media (min-width: 480px) {
-        #main header .pattern-wrapper {
-          height: 60px !important; } }
-      @media (min-width: 660px) {
-        #main header .pattern-wrapper {
-          height: 80px !important; } }
-      @media (min-width: 740px) {
-        #main header .pattern-wrapper {
-          height: 100px !important; } }
-      #main header .pattern-wrapper .pattern .img-wrapper {
-        top: 16px; }
-      #main header .pattern-wrapper .pattern-center-wrapper {
-        position: relative;
-        height: 100%;
-        font-size: 0; }
-        @media (min-width: 740px) {
-          #main header .pattern-wrapper .pattern-center-wrapper {
-            margin: 0 100px; } }
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-left,
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-title,
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
-          position: relative;
-          height: 100%;
-          display: inline-block;
-          vertical-align: top; }
-          #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper,
-          #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper,
-          #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper {
-            position: absolute;
-            width: 100%;
-            font-size: 0;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -khtml-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-            overflow: hidden;
-            white-space: nowrap; }
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-            #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-              position: relative;
-              display: inline-block;
-              width: 50%; }
-              @media (min-width: 660px) {
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-                  width: 33%; } }
-              @media (min-width: 980px) {
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-left .img-wrapper img,
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .img-wrapper img,
-                #main header .pattern-wrapper .pattern-center-wrapper .pattern-right .img-wrapper img {
-                  width: 20%; } }
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-left {
-          width: 20%;
-          overflow: hidden;
-          text-align: left; }
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-title {
-          width: 60%;
-          font-size: 16px;
-          color: #FFF;
-          font-family: 'Londrina Solid', sans-serif; }
-          #main header .pattern-wrapper .pattern-center-wrapper .pattern-title .title-wrapper {
-            width: 100%;
-            position: absolute;
-            text-align: center;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -khtml-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%); }
-        #main header .pattern-wrapper .pattern-center-wrapper .pattern-right {
-          width: 20%;
-          overflow: hidden;
-          text-align: right; }
+  #main header .pattern-wrapper {
+    display: inline-block; }
+    #main header .pattern-wrapper .pattern .img-wrapper {
+      top: 16px;
+      padding: 0 0 20px 0; }
   #main footer .pattern-wrapper .pattern .img-wrapper {
-    bottom: 16px; }
+    bottom: 16px;
+    padding: 20px 0 0 0; }
   #main header,
   #main footer {
     position: relative;
-    font-size: 0;
-    height: 100px; }
+    font-size: 0; }
     #main header .pattern-wrapper,
     #main footer .pattern-wrapper {
       box-sizing: border-box;
       width: 100%;
-      height: 100%;
       position: relative; }
+      @media (min-width: 740px) {
+        #main header .pattern-wrapper,
+        #main footer .pattern-wrapper {
+          padding: 0 100px; } }
       #main header .pattern-wrapper .pattern,
       #main footer .pattern-wrapper .pattern {
-        position: relative;
-        height: 100%; }
+        position: relative; }
         @media (min-width: 740px) {
           #main header .pattern-wrapper .pattern,
           #main footer .pattern-wrapper .pattern {
-            margin: 0 100px; } }
+            height: 100px; } }
         #main header .pattern-wrapper .pattern .img-wrapper,
         #main footer .pattern-wrapper .pattern .img-wrapper {
-          position: absolute;
+          position: relative;
           width: 100%;
           font-size: 0;
           overflow: hidden;
           white-space: nowrap; }
+          @media (min-width: 740px) {
+            #main header .pattern-wrapper .pattern .img-wrapper,
+            #main footer .pattern-wrapper .pattern .img-wrapper {
+              position: absolute;
+              padding: 0; } }
           #main header .pattern-wrapper .pattern .img-wrapper img,
           #main footer .pattern-wrapper .pattern .img-wrapper img {
             position: relative;
             display: inline-block;
             width: 10%; }
-            @media (min-width: 980px) {
+            @media (min-width: 740px) {
               #main header .pattern-wrapper .pattern .img-wrapper img,
               #main footer .pattern-wrapper .pattern .img-wrapper img {
                 width: 5%; } }
@@ -1170,12 +1098,12 @@ body {
         @media (min-width: 740px) {
           #main header .pattern-wrapper .chili,
           #main footer .pattern-wrapper .chili {
-            display: block;
+            position: absolute;
+            display: inline-block;
             top: 0;
             width: 67px;
             height: 67px;
             padding: 17px 16px 16px 16px;
-            position: absolute;
             background-repeat: no-repeat;
             background-position: center center; } }
       #main header .pattern-wrapper .chili-bottom-left,
@@ -1196,7 +1124,6 @@ body {
         background-image: url("../img/chili-top-right.png"); }
   #main #content {
     position: relative;
-    height: 100%;
     font-family: "Guardian Sans Web", sans-serif; }
     #main #content #intro {
       padding: 25px;
@@ -1209,7 +1136,8 @@ body {
     #main #content #list {
       padding: 25px;
       position: relative;
-      font-size: 0; }
+      font-size: 0;
+      box-sizing: border-box; }
       @media (min-width: 740px) {
         #main #content #list {
           padding: 0 25px; } }
@@ -1527,9 +1455,11 @@ body {
       #main #content .content-element.hidden {
         z-index: -1000;
         opacity: 0;
-        height: 0px;
+        height: 0px !important;
+        width: 0px !important;
         padding: 0 !important;
-        margin: 0 !important; }
+        margin: 0 !important;
+        position: absolute; }
 
 .only-tablet,
 .only-above-tablet,

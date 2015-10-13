@@ -53,9 +53,9 @@ define( function ( require ) {
       this.setupEvents();
 
       // set sizes
-      setTimeout(function() {
+      setTimeout( function () {
         this.onResize();
-      }.bind(this), 250);
+      }.bind( this ), 250 );
 
 
     },
@@ -64,7 +64,7 @@ define( function ( require ) {
 
       //console.log( 'showin item ' + id );
 
-      if (this.imagesLoaded) {
+      if ( this.imagesLoaded ) {
 
         $( 'body' ).scrollTop( 0 );
         var duration = speed || 0;

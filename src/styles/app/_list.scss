@@ -3,6 +3,7 @@
   padding: 25px;
   position: relative;
   font-size: 0;
+  box-sizing: border-box;
 
   @media(min-width: 740px) {
     padding: 0 25px;
@@ -19,6 +20,8 @@
     letter-spacing: 0.5px;
 
     padding: 0 0 20px 0;
+
+
   }
 
 
