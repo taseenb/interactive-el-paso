@@ -10,6 +10,9 @@ define( function ( require ) {
     this.$el = $( el );
     this.el = this.$el[0];
 
+    // Support transitions (to detect IE9)
+    this.transitionDuration = App.supportTransitions ? 300 : 0;
+
     this.initialize();
 
   };
@@ -35,32 +38,25 @@ define( function ( require ) {
       } );
       this.$el.html( html );
 
-      this.swiper = new Swiper( this.$el.find( '.swiper-container' ), {
+      this.swiper = new Swiper( this.$el.find( '.swiper-container' )[0], {
         // Optional parameters
-        //direction: 'vertical',
-        //loop: true, //
-
         spaceBetween: 50,
-
         loop: App.swiperLoop,
-
-        // If we need pagination
-        //pagination: '.swiper-pagination',
+        onlyExternal: App.supportTransitions ? false : true,
+        //mode: 'horizontal',
 
         // Navigation arrows
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
+        nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
+        prevButton: App.supportTransitions ? '.swiper-button-prev' : undefined,
 
-        onSlideChangeEnd: function ( swiper ) {
+        onSlideChangeEnd: App.supportTransitions ? function ( swiper ) {
           App.currentItem = swiper.activeIndex;
-        }
-
-        // And if we need scrollbar
-        //scrollbar: '.swiper-scrollbar'
+          //console.log( App.currentItem );
+        } : undefined
       } );
 
-      // Get the number of slides
-      App.slidesCount = this.swiper.slides.length;
+      // Get the right number of slides (the loop version adds 2 slides)
+      App.slidesCount = this.$el.find( '.swiper-slide' ).length - (App.swiperLoop ? 2 : 0);
 
       this.setupElements();
       this.setupEvents();
@@ -83,6 +79,8 @@ define( function ( require ) {
         var duration = speed || 0;
         this.swiper.slideTo( id, duration );
 
+        //this.swiper.swipeTo( id, duration );
+
       }
 
     },
@@ -98,8 +96,6 @@ define( function ( require ) {
       this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
       this.$animImage = this.$detailsWrapper.find( '.anim-img' ).eq( this.requestedId );
 
-      //console.log( this.$animImage );
-
     },
 
     setupEvents: function () {
@@ -114,13 +110,49 @@ define( function ( require ) {
 
         this.goto( this.requestedId, 0 );
 
-        App.mainView.show( 'swiper' );
-
         this.onResize();
 
         //console.log( e );
 
       }.bind( this ) );
+
+
+      // Arrows PREV / NEXT
+      if ( !App.supportTransitions ) {
+
+        this.$el.on( event, '.swiper-button-prev', function ( e ) {
+
+          //console.log( e.target.className );
+          //console.log( App.currentItem + ' / ' + App.slidesCount );
+
+          var prevId = App.currentItem - 1;
+          if ( prevId < (App.swiperLoop ? 1 : 0) ) {
+            prevId = App.swiperLoop ? App.slidesCount : App.slidesCount - 1;
+          }
+
+          this.goto( prevId, this.transitionDuration );
+
+          App.currentItem = prevId;
+
+        }.bind( this ) );
+
+        this.$el.on( event, '.swiper-button-next', function ( e ) {
+
+          //console.log( e.target.className );
+          //console.log( App.currentItem + ' / ' + App.slidesCount );
+
+          var nextId = App.currentItem + 1 >= App.slidesCount ? 0 : App.currentItem + 1;
+          if ( nextId === 0 && App.swiperLoop ) {
+            nextId = 1;
+          }
+
+          this.goto( nextId, this.transitionDuration );
+
+          App.currentItem = nextId;
+
+        }.bind( this ) );
+
+      }
 
     },
 
@@ -154,6 +186,7 @@ define( function ( require ) {
 
       // Update the swiper
       this.swiper.onResize();
+      //this.swiper.resizeFix();
 
     }
 

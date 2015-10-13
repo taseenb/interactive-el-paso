@@ -31,9 +31,9 @@ define( function ( require ) {
       html += _.template( headerTpl )( {
         copy: App.data.copy
       } );
-      html += _.template( contentTpl )({
+      html += _.template( contentTpl )( {
         copy: App.data.copy
-      });
+      } );
       html += _.template( footerTpl )();
       this.$el.html( html );
 
@@ -51,7 +51,7 @@ define( function ( require ) {
 
     setupEvents: function () {
 
-      // var event = App.isTouch ? 'touchstart' : 'click';
+       var event = App.isTouch ? 'touchstart' : 'click';
       // this.$el.on( event, this.onClick.bind( this ) );
 
     },
@@ -59,25 +59,25 @@ define( function ( require ) {
     show: function ( view ) {
 
       if ( view === 'list' ) {
-        this.showView(App.listView);
-        this.hideView(App.swiperView);
+        this.showView( App.listView );
+        this.hideView( App.swiperView );
       } else if ( view === 'swiper' ) {
-        this.showView(App.swiperView);
-        this.hideView(App.listView);
+        this.showView( App.swiperView );
+        this.hideView( App.listView );
       }
 
     },
 
     showView: function ( view ) {
 
-      view.$el.removeClass('hidden');
+      view.$el.removeClass( 'hidden' );
       view.onShow();
 
     },
 
     hideView: function ( view ) {
 
-      view.$el.addClass('hidden');
+      view.$el.addClass( 'hidden' );
       view.onHide();
 
     }

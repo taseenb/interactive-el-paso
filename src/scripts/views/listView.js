@@ -71,16 +71,14 @@ define( function ( require ) {
 
       } else {
 
-        if ( App.currentItem !== id ) {
-          App.swiperView.goto( id );
-          App.mainView.show( 'swiper' );
-        } else {
-          App.mainView.show( 'swiper' );
-        }
+        App.swiperView.goto( id );
 
       }
 
+      App.mainView.show( 'swiper' );
+
       window.scrollTo( 0, 0 );
+
       App.currentItem = id;
 
     },

@@ -5,6 +5,8 @@ define( function ( require ) {
   // Create App global
   window.App = window.App || {};
 
+  // Support
+  App.supportTransitions = !$( 'html' ).hasClass( 'no-csstransitions' );
 
   // ##################################################
   // #
@@ -12,7 +14,7 @@ define( function ( require ) {
   // #
   // ##################################################
   // #
-  App.swiperLoop = true;
+  App.swiperLoop = App.supportTransitions ? true : false;
   // #
   // ##################################################
 
@@ -29,7 +31,7 @@ define( function ( require ) {
 
   // Resize event
   var resizeEvent = require( 'resize' );
-  resizeEvent.initialize()
+  resizeEvent.initialize();
 
 
   // Import Swiper

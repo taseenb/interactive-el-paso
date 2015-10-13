@@ -1209,12 +1209,15 @@ body {
           color: #cf4b1b;
           text-transform: uppercase; }
     #main #content #swiper {
+      /* Specify Swiper's Size: */
       padding: 0;
       width: 100%;
       box-sizing: border-box; }
       @media (min-width: 740px) {
         #main #content #swiper {
           padding: 0 25px; } }
+      #main #content #swiper .back-to-list {
+        cursor: pointer; }
       #main #content #swiper .h1-wrapper .back-to-list {
         display: none; }
         @media (min-width: 740px) {
@@ -1295,7 +1298,8 @@ body {
         background-size: 42px 36px;
         width: 42px;
         height: 36px;
-        margin-top: -18px; }
+        margin-top: -18px;
+        z-index: 1000; }
         @media (min-width: 740px) {
           #main #content #swiper .swiper-button-prev,
           #main #content #swiper .swiper-container-rtl .swiper-button-next,

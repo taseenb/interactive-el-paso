@@ -1,11 +1,13 @@
 #swiper {
 
+  /* Specify Swiper's Size: */
+  //.swiper-container,
+  //.swiper-slide {
+  //  height: 100%;
+  //}
+
   padding: 0;
-  //position: relative; //
-  //top: 0;
-  //left: 0;
   width: 100%;
-  //height: 100%;
   box-sizing: border-box;
 
   @media(min-width: 740px) {
@@ -13,15 +15,9 @@
   }
 
   // BACK TO LIST ICON
-  //.back-to-list {
-  //  position: absolute;
-  //  top: 0px;
-  //  right: 30px;
-  //  width: 50px;
-  //  height: 50px;
-  //  z-index: 100;
-  //  cursor: pointer;
-  //}
+  .back-to-list {
+    cursor: pointer;
+  }
 
   .h1-wrapper {
     .back-to-list {
@@ -104,6 +100,7 @@
     width: 42px;
     height: 36px;
     margin-top: -18px;
+    z-index: 1000;
 
     @media(min-width: 740px) {
       display: block;
@@ -155,9 +152,6 @@
     .swiper-slide {
       font-size: 0;
       position: relative;
-
-      //min-width: 100%;
-      //max-width: 100%;
 
       // ITEM TITLE
       h1 {
