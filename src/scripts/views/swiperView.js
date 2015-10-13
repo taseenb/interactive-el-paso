@@ -26,7 +26,7 @@ define( function ( require ) {
 
       this.requestedId = id; //App.swiperLoop ? id : id - 1;
 
-      console.log( this.requestedId );
+      //console.log( this.requestedId );
 
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
@@ -59,10 +59,8 @@ define( function ( require ) {
         //scrollbar: '.swiper-scrollbar'
       } );
 
+      // Get the number of slides
       App.slidesCount = this.swiper.slides.length;
-
-      console.log( this.swiper.activeIndex );
-
 
       this.setupElements();
       this.setupEvents();
@@ -85,15 +83,7 @@ define( function ( require ) {
         var duration = speed || 0;
         this.swiper.slideTo( id, duration );
 
-        console.log( 'showin item ' + id );
-
       }
-
-      //else {
-      //
-      //  this.onResize();
-      //
-      //}
 
     },
 
@@ -126,11 +116,9 @@ define( function ( require ) {
 
         App.mainView.show( 'swiper' );
 
-        this.swiper.onResize();
-
         this.onResize();
 
-        console.log( e );
+        //console.log( e );
 
       }.bind( this ) );
 
@@ -155,8 +143,6 @@ define( function ( require ) {
 
       //console.log( e.width, e.height );
 
-      //if ( this.imagesLoaded ) {
-
       var animHeight = this.$animImage.outerHeight( true );
       var titleHeight = this.$slideH1.outerHeight( true );
 
@@ -166,11 +152,8 @@ define( function ( require ) {
 
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
-      //}
-
-      //if ( this.swiper ) {
-      //  this.swiper.update();
-      //}
+      // Update the swiper
+      this.swiper.onResize();
 
     }
 

@@ -6270,7 +6270,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       this.requestedId = id; //App.swiperLoop ? id : id - 1;
 
-      console.log( this.requestedId );
+      //console.log( this.requestedId );
 
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
@@ -6303,10 +6303,8 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         //scrollbar: '.swiper-scrollbar'
       } );
 
+      // Get the number of slides
       App.slidesCount = this.swiper.slides.length;
-
-      console.log( this.swiper.activeIndex );
-
 
       this.setupElements();
       this.setupEvents();
@@ -6329,15 +6327,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         var duration = speed || 0;
         this.swiper.slideTo( id, duration );
 
-        console.log( 'showin item ' + id );
-
       }
-
-      //else {
-      //
-      //  this.onResize();
-      //
-      //}
 
     },
 
@@ -6370,11 +6360,9 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
         App.mainView.show( 'swiper' );
 
-        this.swiper.onResize();
-
         this.onResize();
 
-        console.log( e );
+        //console.log( e );
 
       }.bind( this ) );
 
@@ -6399,8 +6387,6 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       //console.log( e.width, e.height );
 
-      //if ( this.imagesLoaded ) {
-
       var animHeight = this.$animImage.outerHeight( true );
       var titleHeight = this.$slideH1.outerHeight( true );
 
@@ -6410,11 +6396,8 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
-      //}
-
-      //if ( this.swiper ) {
-      //  this.swiper.update();
-      //}
+      // Update the swiper
+      this.swiper.onResize();
 
     }
 
@@ -6490,7 +6473,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
 
       if ( !App.swiperView ) {
 
-        // Create swiper view
+        // Create swiper view with the requested id
         App.swiperView = new SwiperView( '#swiper' );
         App.swiperView.render( id );
 
@@ -6554,8 +6537,6 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     initialize: function () {
 
-      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
-
     },
 
     render: function () {
@@ -6606,32 +6587,12 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
       view.$el.removeClass('hidden');
       view.onShow();
 
-      //view.$el.show();
-
-      //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 1,
-      //  complete: function () {
-      //    //view.$el.css( 'z-index', 10 );
-      //  }
-      //} );
     },
 
     hideView: function ( view ) {
 
       view.$el.addClass('hidden');
       view.onHide();
-
-      //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 0,
-      //  complete: function () {
-      //    //view.$el.css( 'z-index', -1 );
-      //    view.$el.hide();
-      //  }
-      //} );
-    },
-
-    onResize: function ( e ) {
-      // console.log(e.width, e.height);
 
     }
 

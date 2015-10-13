@@ -65,7 +65,7 @@ define( function ( require ) {
 
       if ( !App.swiperView ) {
 
-        // Create swiper view
+        // Create swiper view with the requested id
         App.swiperView = new SwiperView( '#swiper' );
         App.swiperView.render( id );
 

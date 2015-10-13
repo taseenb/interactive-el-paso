@@ -23,8 +23,6 @@ define( function ( require ) {
 
     initialize: function () {
 
-      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
-
     },
 
     render: function () {
@@ -75,32 +73,12 @@ define( function ( require ) {
       view.$el.removeClass('hidden');
       view.onShow();
 
-      //view.$el.show();
-
-      //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 1,
-      //  complete: function () {
-      //    //view.$el.css( 'z-index', 10 );
-      //  }
-      //} );
     },
 
     hideView: function ( view ) {
 
       view.$el.addClass('hidden');
       view.onHide();
-
-      //TweenLite.to( view.$el, 0.4, {
-      //  opacity: 0,
-      //  complete: function () {
-      //    //view.$el.css( 'z-index', -1 );
-      //    view.$el.hide();
-      //  }
-      //} );
-    },
-
-    onResize: function ( e ) {
-      // console.log(e.width, e.height);
 
     }
 
