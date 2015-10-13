@@ -2397,7 +2397,7 @@ define( 'resize',['require','underscore'],function ( require ) {
 
 } );
 /**
- * Swiper 3.1.5
+ * Swiper 3.1.7
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * 
  * http://www.idangero.us/swiper/
@@ -2408,7 +2408,7 @@ define( 'resize',['require','underscore'],function ( require ) {
  * 
  * Licensed under MIT
  * 
- * Released on: September 28, 2015
+ * Released on: October 10, 2015
  */
 (function () {
     'use strict';
@@ -2806,8 +2806,12 @@ define( 'resize',['require','underscore'],function ( require ) {
                     image = new window.Image();
                     image.onload = onReady;
                     image.onerror = onReady;
-                    image.srcset = srcset;
-                    image.src = src;
+                    if (srcset) {
+                        image.srcset = srcset;
+                    }
+                    if (src) {
+                        image.src = src;
+                    }
                 } else {
                     onReady();
                 }
@@ -2962,6 +2966,9 @@ define( 'resize',['require','underscore'],function ( require ) {
                 else {
                     slidesNumberEvenToRows = Math.ceil(s.slides.length / s.params.slidesPerColumn) * s.params.slidesPerColumn;
                 }
+                if (s.params.slidesPerView !== 'auto' && s.params.slidesPerColumnFill === 'row') {
+                    slidesNumberEvenToRows = Math.max(slidesNumberEvenToRows, s.params.slidesPerView * s.params.slidesPerColumn);
+                }
             }
         
             // Calc slides
@@ -3047,7 +3054,6 @@ define( 'resize',['require','underscore'],function ( require ) {
                 index ++;
             }
             s.virtualSize = Math.max(s.virtualSize, s.size) + s.params.slidesOffsetAfter;
-        
             var newSlidesGrid;
         
             if (
@@ -3514,20 +3520,12 @@ define( 'resize',['require','underscore'],function ( require ) {
                     realIndex,
                     duplicatedSlides;
                 if (s.params.loop) {
+                    if (s.animating) return;
                     realIndex = $(s.clickedSlide).attr('data-swiper-slide-index');
                     if (s.params.centeredSlides) {
-        
-                        if (slideToIndex < s.loopedSlides - s.params.slidesPerView/2) {
+                        if ((slideToIndex < s.loopedSlides - s.params.slidesPerView/2) || (slideToIndex > s.slides.length - s.loopedSlides + s.params.slidesPerView/2)) {
                             s.fixLoop();
-                            duplicatedSlides = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]');
-                            slideToIndex = duplicatedSlides.eq(duplicatedSlides.length - 1).index();
-                            setTimeout(function () {
-                                s.slideTo(slideToIndex);
-                            }, 0);
-                        }
-                        else if (slideToIndex > s.slides.length - s.loopedSlides + s.params.slidesPerView/2) {
-                            s.fixLoop();
-                            slideToIndex = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]').eq(0).index();
+                            slideToIndex = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]:not(.swiper-slide-duplicate)').eq(0).index();
                             setTimeout(function () {
                                 s.slideTo(slideToIndex);
                             }, 0);
@@ -3539,15 +3537,7 @@ define( 'resize',['require','underscore'],function ( require ) {
                     else {
                         if (slideToIndex > s.slides.length - s.params.slidesPerView) {
                             s.fixLoop();
-                            slideToIndex = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]').eq(0).index();
-                            setTimeout(function () {
-                                s.slideTo(slideToIndex);
-                            }, 0);
-                        }
-                        else if (slideToIndex < s.params.slidesPerView - 1) {
-                            s.fixLoop();
-                            duplicatedSlides = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]');
-                            slideToIndex = duplicatedSlides.eq(duplicatedSlides.length - 1).index();
+                            slideToIndex = s.wrapper.children('.' + s.params.slideClass + '[data-swiper-slide-index="' + realIndex + '"]:not(.swiper-slide-duplicate)').eq(0).index();
                             setTimeout(function () {
                                 s.slideTo(slideToIndex);
                             }, 0);
@@ -4699,7 +4689,7 @@ define( 'resize',['require','underscore'],function ( require ) {
                 var slide = s.slides.eq(index);
                 var img = slide.find('.swiper-lazy:not(.swiper-lazy-loaded):not(.swiper-lazy-loading)');
                 if (slide.hasClass('swiper-lazy') && !slide.hasClass('swiper-lazy-loaded') && !slide.hasClass('swiper-lazy-loading')) {
-                    img.add(slide[0]);
+                    img = img.add(slide[0]);
                 }
                 if (img.length === 0) return;
         
@@ -4719,8 +4709,11 @@ define( 'resize',['require','underscore'],function ( require ) {
                                 _img.attr('srcset', srcset);
                                 _img.removeAttr('data-srcset');    
                             }
-                            _img.attr('src', src);
-                            _img.removeAttr('data-src');
+                            if (src) {
+                                _img.attr('src', src);    
+                                _img.removeAttr('data-src');
+                            }
+                            
                         }
                             
                         _img.addClass('swiper-lazy-loaded').removeClass('swiper-lazy-loading');
@@ -5271,10 +5264,11 @@ define( 'resize',['require','underscore'],function ( require ) {
             }
             else {
                 //Freemode or scrollContainer:
-        
                 var position = s.getWrapperTranslate() + delta * s.params.mousewheelSensitivity;
         
-                if (position > 0) position = 0;
+                if (position > s.minTranslate()) {
+                    position = s.minTranslate();
+                }
                 if (position < s.maxTranslate()) position = s.maxTranslate();
         
                 s.setWrapperTransition(0);
