@@ -16,6 +16,7 @@
     @include css3-prefix(transition-property, opacity);
     overflow: hidden;
     height: auto;
+    position: relative;
 
     &.hidden {
       z-index: -1000;

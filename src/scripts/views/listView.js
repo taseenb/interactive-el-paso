@@ -58,30 +58,38 @@ define( function ( require ) {
 
       var id = parseInt( $( e.target ).closest( '.item' ).data( 'id' ) );
 
-      if ( !App.swiperView ) {
-        // Create swiper view
-        App.swiperView = new SwiperView( '#swiper' );
-        App.swiperView.render();
+      // since the loop feature on the swiper changes all the indexes we have to get the requested id + 1
+      if ( App.swiperLoop ) {
+        id = id + 1 >= App.slidesCount ? 0 : id + 1;
       }
 
-      if ( App.currentItem !== id ) {
-        App.swiperView.goto( id );
-        App.mainView.show( 'swiper' );
+      if ( !App.swiperView ) {
+
+        // Create swiper view
+        App.swiperView = new SwiperView( '#swiper' );
+        App.swiperView.render( id );
+
       } else {
-        App.mainView.show( 'swiper' );
+
+        if ( App.currentItem !== id ) {
+          App.swiperView.goto( id );
+          App.mainView.show( 'swiper' );
+        } else {
+          App.mainView.show( 'swiper' );
+        }
+
       }
 
       window.scrollTo( 0, 0 );
-
       App.currentItem = id;
 
     },
 
-    onShow: function() {
+    onShow: function () {
 
     },
 
-    onHide: function() {
+    onHide: function () {
 
     },
 

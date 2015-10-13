@@ -2,24 +2,39 @@ define( function ( require ) {
 
   'use strict';
 
-  var Mediator = require( 'mediator-js' );
-
   // Create App global
   window.App = window.App || {};
 
-  // Global Events - pub/sub
-  App.mediator = new Mediator();
 
-  // Resize event
-  var resizeEvent = require( 'resize' );
-  resizeEvent.initialize();
+  // ##################################################
+  // #
+  // Swiper Options
+  // #
+  // ##################################################
+  // #
+  App.swiperLoop = true;
+  // #
+  // ##################################################
+
 
   // Device
   App.isTouch = $( 'html' ).hasClass( 'touch' );
   App.isPhone = App.isTouch && (App.width < 481 || App.height < 481);
 
+
+  // Global Events - pub/sub
+  var Mediator = require( 'mediator-js' );
+  App.mediator = new Mediator();
+
+
+  // Resize event
+  var resizeEvent = require( 'resize' );
+  resizeEvent.initialize()
+
+
   // Import Swiper
   App.swiper = require( 'swiper' );
+
 
   // Get data and start main view
   $.ajax( {

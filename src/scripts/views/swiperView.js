@@ -22,7 +22,11 @@ define( function ( require ) {
 
     },
 
-    render: function () {
+    render: function ( id ) {
+
+      this.requestedId = id; //App.swiperLoop ? id : id - 1;
+
+      console.log( this.requestedId );
 
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
@@ -38,7 +42,7 @@ define( function ( require ) {
 
         spaceBetween: 50,
 
-        loop: true,
+        loop: App.swiperLoop,
 
         // If we need pagination
         //pagination: '.swiper-pagination',
@@ -55,6 +59,10 @@ define( function ( require ) {
         //scrollbar: '.swiper-scrollbar'
       } );
 
+      App.slidesCount = this.swiper.slides.length;
+
+      console.log( this.swiper.activeIndex );
+
 
       this.setupElements();
       this.setupEvents();
@@ -62,7 +70,7 @@ define( function ( require ) {
       // set sizes
       setTimeout( function () {
         this.onResize();
-      }.bind( this ), 250 );
+      }.bind( this ), 0 );
 
 
     },
@@ -77,15 +85,13 @@ define( function ( require ) {
         var duration = speed || 0;
         this.swiper.slideTo( id, duration );
 
-      } else {
-
-        this.onResize();
+        console.log( 'showin item ' + id );
 
       }
 
       //else {
       //
-      //
+      //  this.onResize();
       //
       //}
 
@@ -99,8 +105,8 @@ define( function ( require ) {
       this.$prevNextArrows = this.$mobileNav.find( '.arrow' );
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
-      this.$detailsWrapper = this.$slides.find( '.details-wrapper' ).first();
-      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
+      this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).eq( this.requestedId );
 
       //console.log( this.$animImage );
 
@@ -115,8 +121,16 @@ define( function ( require ) {
       this.$animImage.on( 'load', function ( e ) {
 
         this.imagesLoaded = true;
+
+        this.goto( this.requestedId, 0 );
+
+        App.mainView.show( 'swiper' );
+
+        this.swiper.onResize();
+
         this.onResize();
-        //console.log( e );
+
+        console.log( e );
 
       }.bind( this ) );
 

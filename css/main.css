@@ -1458,7 +1458,8 @@ body {
       -o-transition-property: opacity;
       transition-property: opacity;
       overflow: hidden;
-      height: auto; }
+      height: auto;
+      position: relative; }
       #main #content .content-element.hidden {
         z-index: -1000;
         opacity: 0;

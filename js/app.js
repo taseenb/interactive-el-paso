@@ -6266,7 +6266,11 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     },
 
-    render: function () {
+    render: function ( id ) {
+
+      this.requestedId = id; //App.swiperLoop ? id : id - 1;
+
+      console.log( this.requestedId );
 
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
@@ -6282,7 +6286,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
         spaceBetween: 50,
 
-        loop: true,
+        loop: App.swiperLoop,
 
         // If we need pagination
         //pagination: '.swiper-pagination',
@@ -6299,6 +6303,10 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         //scrollbar: '.swiper-scrollbar'
       } );
 
+      App.slidesCount = this.swiper.slides.length;
+
+      console.log( this.swiper.activeIndex );
+
 
       this.setupElements();
       this.setupEvents();
@@ -6306,7 +6314,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       // set sizes
       setTimeout( function () {
         this.onResize();
-      }.bind( this ), 250 );
+      }.bind( this ), 0 );
 
 
     },
@@ -6321,15 +6329,13 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         var duration = speed || 0;
         this.swiper.slideTo( id, duration );
 
-      } else {
-
-        this.onResize();
+        console.log( 'showin item ' + id );
 
       }
 
       //else {
       //
-      //
+      //  this.onResize();
       //
       //}
 
@@ -6343,8 +6349,8 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.$prevNextArrows = this.$mobileNav.find( '.arrow' );
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
-      this.$detailsWrapper = this.$slides.find( '.details-wrapper' ).first();
-      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
+      this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).eq( this.requestedId );
 
       //console.log( this.$animImage );
 
@@ -6359,8 +6365,16 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       this.$animImage.on( 'load', function ( e ) {
 
         this.imagesLoaded = true;
+
+        this.goto( this.requestedId, 0 );
+
+        App.mainView.show( 'swiper' );
+
+        this.swiper.onResize();
+
         this.onResize();
-        //console.log( e );
+
+        console.log( e );
 
       }.bind( this ) );
 
@@ -6469,30 +6483,38 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
 
       var id = parseInt( $( e.target ).closest( '.item' ).data( 'id' ) );
 
-      if ( !App.swiperView ) {
-        // Create swiper view
-        App.swiperView = new SwiperView( '#swiper' );
-        App.swiperView.render();
+      // since the loop feature on the swiper changes all the indexes we have to get the requested id + 1
+      if ( App.swiperLoop ) {
+        id = id + 1 >= App.slidesCount ? 0 : id + 1;
       }
 
-      if ( App.currentItem !== id ) {
-        App.swiperView.goto( id );
-        App.mainView.show( 'swiper' );
+      if ( !App.swiperView ) {
+
+        // Create swiper view
+        App.swiperView = new SwiperView( '#swiper' );
+        App.swiperView.render( id );
+
       } else {
-        App.mainView.show( 'swiper' );
+
+        if ( App.currentItem !== id ) {
+          App.swiperView.goto( id );
+          App.mainView.show( 'swiper' );
+        } else {
+          App.mainView.show( 'swiper' );
+        }
+
       }
 
       window.scrollTo( 0, 0 );
-
       App.currentItem = id;
 
     },
 
-    onShow: function() {
+    onShow: function () {
 
     },
 
-    onHide: function() {
+    onHide: function () {
 
     },
 
@@ -6622,24 +6644,39 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
 
   'use strict';
 
-  var Mediator = require( 'mediator-js' );
-
   // Create App global
   window.App = window.App || {};
 
-  // Global Events - pub/sub
-  App.mediator = new Mediator();
 
-  // Resize event
-  var resizeEvent = require( 'resize' );
-  resizeEvent.initialize();
+  // ##################################################
+  // #
+  // Swiper Options
+  // #
+  // ##################################################
+  // #
+  App.swiperLoop = true;
+  // #
+  // ##################################################
+
 
   // Device
   App.isTouch = $( 'html' ).hasClass( 'touch' );
   App.isPhone = App.isTouch && (App.width < 481 || App.height < 481);
 
+
+  // Global Events - pub/sub
+  var Mediator = require( 'mediator-js' );
+  App.mediator = new Mediator();
+
+
+  // Resize event
+  var resizeEvent = require( 'resize' );
+  resizeEvent.initialize()
+
+
   // Import Swiper
   App.swiper = require( 'swiper' );
+
 
   // Get data and start main view
   $.ajax( {
