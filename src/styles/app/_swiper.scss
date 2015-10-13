@@ -1,9 +1,9 @@
 #swiper {
 
   padding: 0;
-  position: relative;
-  top: 0;
-  left: 0;
+  //position: relative; //
+  //top: 0;
+  //left: 0;
   width: 100%;
   //height: 100%;
   box-sizing: border-box;
@@ -138,7 +138,8 @@
   .swiper-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    max-width: 100%;
+    //height: 100%;
     box-sizing: border-box;
 
     @media(min-width: 740px) {
@@ -154,6 +155,9 @@
     .swiper-slide {
       font-size: 0;
       position: relative;
+
+      //min-width: 100%;
+      //max-width: 100%;
 
       // ITEM TITLE
       h1 {
@@ -262,7 +266,19 @@
           @media(min-width: 740px) {
             width: 50%;
             padding-right: 50px;
-            max-width: 550px;
+            max-width: 350px;
+          }
+
+          @media(min-width: 980px) {
+            max-width: 500px;
+          }
+
+          //@media(min-width: 1140px) {
+          //  max-width: 550px;
+          //}
+
+          @media(min-width: 1300px) {
+            max-width: 600px;
           }
 
           h2 {

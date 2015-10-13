@@ -6320,6 +6320,12 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       }
 
+      //else {
+      //
+      //
+      //
+      //}
+
     },
 
     setupElements: function () {
@@ -6345,10 +6351,9 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       // Update image size on load
       this.$animImage.on( 'load', function ( e ) {
 
-        this.onResize();
-        console.log( e );
-
         this.imagesLoaded = true;
+        this.onResize();
+        //console.log( e );
 
       }.bind( this ) );
 
@@ -6373,9 +6378,10 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       //console.log( e.width, e.height );
 
+      //if ( this.imagesLoaded ) {
 
-      var titleHeight = this.$slideH1.outerHeight( true );
       var animHeight = this.$animImage.outerHeight( true );
+      var titleHeight = this.$slideH1.outerHeight( true );
 
       if ( animHeight > 0 ) {
         this.$prevNextArrows.removeClass( 'hidden' );
@@ -6383,10 +6389,11 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
+      //}
 
-      if ( this.swiper ) {
-        this.swiper.update();
-      }
+      //if ( this.swiper ) {
+      //  this.swiper.update();
+      //}
 
     }
 

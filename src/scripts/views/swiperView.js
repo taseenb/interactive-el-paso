@@ -76,6 +76,12 @@ define( function ( require ) {
 
       }
 
+      //else {
+      //
+      //
+      //
+      //}
+
     },
 
     setupElements: function () {
@@ -101,10 +107,9 @@ define( function ( require ) {
       // Update image size on load
       this.$animImage.on( 'load', function ( e ) {
 
-        this.onResize();
-        console.log( e );
-
         this.imagesLoaded = true;
+        this.onResize();
+        //console.log( e );
 
       }.bind( this ) );
 
@@ -129,9 +134,10 @@ define( function ( require ) {
 
       //console.log( e.width, e.height );
 
+      //if ( this.imagesLoaded ) {
 
-      var titleHeight = this.$slideH1.outerHeight( true );
       var animHeight = this.$animImage.outerHeight( true );
+      var titleHeight = this.$slideH1.outerHeight( true );
 
       if ( animHeight > 0 ) {
         this.$prevNextArrows.removeClass( 'hidden' );
@@ -139,10 +145,11 @@ define( function ( require ) {
 
       this.$mobileNav.css( 'top', titleHeight + ~~(animHeight / 2) + 'px' );
 
+      //}
 
-      if ( this.swiper ) {
-        this.swiper.update();
-      }
+      //if ( this.swiper ) {
+      //  this.swiper.update();
+      //}
 
     }
 
