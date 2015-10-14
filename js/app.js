@@ -6319,7 +6319,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         onlyExternal: App.supportTransitions ? false : true,
         initialSlide: App.swiperLoop ? id - 1 : id,
 
-        //lazyLoading: true,
+        lazyLoading: true,
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,

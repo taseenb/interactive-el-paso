@@ -23,6 +23,7 @@
     "require": true,
     "$": true,
     "_": true,
-    "Swiper": true
+    "Swiper": true,
+    "iframeMessenger": true
   }
 }
