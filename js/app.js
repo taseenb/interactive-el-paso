@@ -6572,6 +6572,8 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     initialize: function () {
 
+      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
+
     },
 
     render: function () {
@@ -6628,6 +6630,12 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
       view.$el.addClass( 'hidden' );
       view.onHide();
+
+    },
+
+    onResize: function() {
+
+      iframeMessenger.resize(this.$el.outerHeight(true));
 
     }
 

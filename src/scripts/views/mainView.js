@@ -23,6 +23,8 @@ define( function ( require ) {
 
     initialize: function () {
 
+      App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
+
     },
 
     render: function () {
@@ -79,6 +81,12 @@ define( function ( require ) {
 
       view.$el.addClass( 'hidden' );
       view.onHide();
+
+    },
+
+    onResize: function() {
+
+      iframeMessenger.resize(this.$el.outerHeight(true));
 
     }
 
