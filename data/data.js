@@ -2,8 +2,8 @@ callback( {
   "copy": {
     "title": "South of the border: the Mexican ingredient guide",
     "intro-text": "Bold, exuberant and full of flavour, it’s not hard to understand why the UK has fallen for Mexican cuisine. What’s harder to fathom, for a style of cooking that is so simple and intuitive, is why we are confident ordering Mexican food in a restaurant, but flummoxed when it comes to re-creating the dishes in the kitchen. But don’t panic – just start with one simple ingredient and then add your own twist. So get inspired with our interactive guide.",
-    "history-title": "History",
-    "tip-title": "Tip or Twist "
+    "history-title": "Did you know?",
+    "tip-title": "Try this..."
   },
   "items": [
     {
