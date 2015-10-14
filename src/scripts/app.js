@@ -11,6 +11,15 @@ define( function ( require ) {
     // Support
     App.supportTransitions = !$( 'html' ).hasClass( 'no-csstransitions' );
 
+    // Disable console.log on IE 9
+    if ( !App.supportTransitions ) {
+      window.console = {
+        log: function () {
+        }
+      };
+    }
+
+
     // ##################################################
     // #
     // Swiper Options
@@ -47,7 +56,7 @@ define( function ( require ) {
       dataType: 'jsonp',
       jsonpCallback: 'callback',
       cache: false,
-      type : 'GET',
+      type: 'GET',
       success: function ( data ) {
         App.data = data;
 

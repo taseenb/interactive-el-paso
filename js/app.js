@@ -6680,6 +6680,15 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
     // Support
     App.supportTransitions = !$( 'html' ).hasClass( 'no-csstransitions' );
 
+    // Disable console.log on IE 9
+    if ( !App.supportTransitions ) {
+      window.console = {
+        log: function () {
+        }
+      };
+    }
+
+
     // ##################################################
     // #
     // Swiper Options
@@ -6716,7 +6725,7 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
       dataType: 'jsonp',
       jsonpCallback: 'callback',
       cache: false,
-      type : 'GET',
+      type: 'GET',
       success: function ( data ) {
         App.data = data;
 
