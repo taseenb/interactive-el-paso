@@ -6517,7 +6517,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
         id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
-      console.log( id, App.slidesCount );
+      //console.log( id, App.slidesCount );
 
       App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
