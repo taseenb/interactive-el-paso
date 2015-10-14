@@ -20,7 +20,9 @@
             <div class="details-wrapper">
 
                 <div class="anim">
-                    <img src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img">
+                    <img data-src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img swiper-lazy">
+
+                    <div class="swiper-lazy-preloader"></div>
 
                     <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">
                 </div>
