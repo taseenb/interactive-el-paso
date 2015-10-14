@@ -117,19 +117,19 @@ define( function ( require ) {
       this.$el.on( event, '.back-to-list', this.backToList.bind( this ) );
 
       // Update image size on load
-      this.$animImage.on( 'load', function ( e ) {
-
-        this.imagesLoaded = true;
-
-        //this.goto( this.requestedId, 0 );
-
-        this.onResize();
-
-        App.mainView.onResize();
-
-        //console.log( e );
-
-      }.bind( this ) );
+      //this.$animImage.on( 'load', function ( e ) {
+      //
+      //  this.imagesLoaded = true;
+      //
+      //  //this.goto( this.requestedId, 0 );
+      //
+      //  this.onResize();
+      //
+      //  App.mainView.onResize();
+      //
+      //  //console.log( e );
+      //
+      //}.bind( this ) );
 
 
       // Arrows PREV / NEXT
