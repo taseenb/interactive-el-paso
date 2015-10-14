@@ -6309,13 +6309,15 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     renderSwiper: function ( id ) {
 
+      //console.log( id - 1 );
+
       // Start the swiper
       this.swiper = new Swiper( this.$el.find( '.swiper-container' )[0], {
         // Optional parameters
         spaceBetween: 50,
         loop: App.swiperLoop,
         onlyExternal: App.supportTransitions ? false : true,
-        initialSlide: id - 1,
+        initialSlide: App.swiperLoop ? id - 1 : id,
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
@@ -6329,7 +6331,6 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       // set sizes
       setTimeout( function () {
-        $( 'body' ).scrollTop( 0 );
         this.onResize();
       }.bind( this ), 0 );
 
