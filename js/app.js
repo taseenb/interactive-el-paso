@@ -6574,8 +6574,6 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
-      this.onResize();
-
     },
 
     render: function () {
@@ -6596,6 +6594,9 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
       // Create list view
       App.listView = new ListView( '#list' );
       App.listView.render();
+
+      // Update iframeMessenger with new iframe height
+      this.onResize();
     },
 
     setupElements: function () {
@@ -6639,7 +6640,7 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     onResize: function () {
 
-      console.log( this.$el.outerHeight( true ) );
+      //console.log( this.$el.outerHeight( true ) );
 
       iframeMessenger.resize( this.$el.outerHeight( true ) );
 

@@ -25,8 +25,6 @@ define( function ( require ) {
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
-      this.onResize();
-
     },
 
     render: function () {
@@ -47,6 +45,9 @@ define( function ( require ) {
       // Create list view
       App.listView = new ListView( '#list' );
       App.listView.render();
+
+      // Update iframeMessenger with new iframe height
+      this.onResize();
     },
 
     setupElements: function () {
@@ -90,7 +91,7 @@ define( function ( require ) {
 
     onResize: function () {
 
-      console.log( this.$el.outerHeight( true ) );
+      //console.log( this.$el.outerHeight( true ) );
 
       iframeMessenger.resize( this.$el.outerHeight( true ) );
 
