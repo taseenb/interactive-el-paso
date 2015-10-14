@@ -6297,7 +6297,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
         this.renderSwiper( id );
 
-      } else if ( this.imagesLoaded ) {
+      } else {
 
         $( 'body' ).scrollTop( 0 );
         var duration = speed || 0;
@@ -6524,8 +6524,6 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
       if ( App.swiperLoop ) {
         id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
-
-      //console.log( id, App.slidesCount );
 
       App.swiperView.goto( id );
       App.mainView.show( 'swiper' );

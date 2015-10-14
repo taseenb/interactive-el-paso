@@ -69,8 +69,6 @@ define( function ( require ) {
         id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
-      //console.log( id, App.slidesCount );
-
       App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
       window.scrollTo( 0, 0 );

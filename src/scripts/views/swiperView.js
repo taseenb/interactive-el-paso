@@ -53,7 +53,7 @@ define( function ( require ) {
 
         this.renderSwiper( id );
 
-      } else if ( this.imagesLoaded ) {
+      } else {
 
         $( 'body' ).scrollTop( 0 );
         var duration = speed || 0;
