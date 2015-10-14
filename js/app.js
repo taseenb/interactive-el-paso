@@ -6718,7 +6718,7 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
       success: function ( data ) {
         App.data = data;
 
-        console.log( data );
+        //console.log( data );
         //console.log( App.width, App.height );
 
         // Main view

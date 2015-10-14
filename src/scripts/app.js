@@ -49,7 +49,7 @@ define( function ( require ) {
       success: function ( data ) {
         App.data = data;
 
-        console.log( data );
+        //console.log( data );
         //console.log( App.width, App.height );
 
         // Main view
