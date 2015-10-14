@@ -31,7 +31,7 @@ define( function ( require ) {
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
         items: App.data.items,
-        optimizedFolder: App.isPhone ? 'opt/' : '' // load optimized gifs if this is a phone
+        optimizedFolder: 'opt/' //App.isPhone ? 'opt/' : '' // load optimized gifs if this is a phone
       } );
       this.$el.html( html );
 
