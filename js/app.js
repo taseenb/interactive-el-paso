@@ -6574,6 +6574,8 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
+      this.onResize();
+
     },
 
     render: function () {
@@ -6616,6 +6618,8 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
         this.showView( App.swiperView );
         this.hideView( App.listView );
       }
+
+      this.onResize();
 
     },
 

@@ -25,6 +25,8 @@ define( function ( require ) {
 
       App.mediator.subscribe( 'resize', this.onResize.bind( this ) );
 
+      this.onResize();
+
     },
 
     render: function () {
@@ -67,6 +69,8 @@ define( function ( require ) {
         this.showView( App.swiperView );
         this.hideView( App.listView );
       }
+
+      this.onResize();
 
     },
 
