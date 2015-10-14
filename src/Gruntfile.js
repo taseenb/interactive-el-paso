@@ -75,23 +75,23 @@ module.exports = function ( grunt ) {
         }
       },
 
-//      min: {
-//        options: {
-//          baseUrl: 'scripts',
-//          mainConfigFile: "scripts/config.js",
-//          include: ['app'], // assumes a production build using almond
-//          name: "../node_modules/almond/almond",
-//          out: '../js/app.min.js',
-//          wrapShim: true,
-//          removeCombined: true,
-//          useStrict: true,
-//          optimize: 'uglify2',
-//          generateSourceMaps: true,
-//          preserveLicenseComments: false,
-//          findNestedDependencies: true,
-//          insertRequire: ['app']
-//        }
-//      }
+      min: {
+        options: {
+          baseUrl: 'scripts',
+          mainConfigFile: "scripts/config.js",
+          include: ['app'], // assumes a production build using almond
+          name: "../node_modules/almond/almond",
+          out: '../js/app.min.js',
+          wrapShim: true,
+          removeCombined: true,
+          useStrict: true,
+          optimize: 'uglify2',
+          //generateSourceMaps: true,
+          preserveLicenseComments: false,
+          findNestedDependencies: true,
+          insertRequire: ['app']
+        }
+      }
     }
 
   } );
