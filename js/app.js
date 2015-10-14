@@ -6715,6 +6715,8 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
       url: 'data/data.js',
       dataType: 'jsonp',
       jsonpCallback: 'callback',
+      cache: false,
+      type : 'GET',
       success: function ( data ) {
         App.data = data;
 

@@ -46,6 +46,8 @@ define( function ( require ) {
       url: 'data/data.js',
       dataType: 'jsonp',
       jsonpCallback: 'callback',
+      cache: false,
+      type : 'GET',
       success: function ( data ) {
         App.data = data;
 
