@@ -56,29 +56,24 @@ define( function ( require ) {
 
       e.preventDefault();
 
+      if ( !App.swiperView ) {
+        // Create swiper view with the requested id
+        App.swiperView = new SwiperView( '#swiper' );
+        App.swiperView.render();
+      }
+
       var id = parseInt( $( e.target ).closest( '.item' ).data( 'id' ) );
 
       // since the loop feature on the swiper changes all the indexes we have to get the requested id + 1
       if ( App.swiperLoop ) {
-        id = id + 1 >= App.slidesCount ? 0 : id + 1;
+        id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
-      if ( !App.swiperView ) {
+      console.log( id, App.slidesCount );
 
-        // Create swiper view with the requested id
-        App.swiperView = new SwiperView( '#swiper' );
-        App.swiperView.render( id );
-
-      } else {
-
-        App.swiperView.goto( id );
-
-      }
-
+      App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
-
       window.scrollTo( 0, 0 );
-
       App.currentItem = id;
 
     },

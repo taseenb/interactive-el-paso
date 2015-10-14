@@ -25,12 +25,9 @@ define( function ( require ) {
 
     },
 
-    render: function ( id ) {
+    render: function () {
 
-      this.requestedId = id; //App.swiperLoop ? id : id - 1;
-
-      //console.log( this.requestedId );
-
+      // Render html
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
         items: App.data.items,
@@ -38,13 +35,43 @@ define( function ( require ) {
       } );
       this.$el.html( html );
 
+
+      // Get the right number of slides (the loop version adds 2 slides)
+      App.slidesCount = this.$el.find( '.swiper-slide' ).length;
+
+
+      this.setupElements();
+      this.setupEvents();
+
+    },
+
+    goto: function ( id, speed ) {
+
+      //console.log( 'showin item ' + id );
+
+      if ( !this.swiper ) {
+
+        this.renderSwiper( id );
+
+      } else if ( this.imagesLoaded ) {
+
+        $( 'body' ).scrollTop( 0 );
+        var duration = speed || 0;
+        this.swiper.slideTo( id, duration );
+
+      }
+
+    },
+
+    renderSwiper: function ( id ) {
+
+      // Start the swiper
       this.swiper = new Swiper( this.$el.find( '.swiper-container' )[0], {
         // Optional parameters
         spaceBetween: 50,
         loop: App.swiperLoop,
         onlyExternal: App.supportTransitions ? false : true,
-        initialSlide: this.requestedId || 0,
-        //mode: 'horizontal',
+        initialSlide: id - 1,
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
@@ -56,33 +83,11 @@ define( function ( require ) {
         } : undefined
       } );
 
-      // Get the right number of slides (the loop version adds 2 slides)
-      App.slidesCount = this.$el.find( '.swiper-slide' ).length - (App.swiperLoop ? 2 : 0);
-
-      this.setupElements();
-      this.setupEvents();
-
       // set sizes
       setTimeout( function () {
+        $( 'body' ).scrollTop( 0 );
         this.onResize();
       }.bind( this ), 0 );
-
-
-    },
-
-    goto: function ( id, speed ) {
-
-      //console.log( 'showin item ' + id );
-
-      if ( this.imagesLoaded ) {
-
-        $( 'body' ).scrollTop( 0 );
-        var duration = speed || 0;
-        this.swiper.slideTo( id, duration );
-
-        //this.swiper.swipeTo( id, duration );
-
-      }
 
     },
 
@@ -95,7 +100,7 @@ define( function ( require ) {
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
       this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
-      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).eq( this.requestedId );
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
 
     },
 
@@ -109,7 +114,7 @@ define( function ( require ) {
 
         this.imagesLoaded = true;
 
-        this.goto( this.requestedId, 0 );
+        //this.goto( this.requestedId, 0 );
 
         this.onResize();
 

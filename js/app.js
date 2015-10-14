@@ -6269,12 +6269,9 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
     },
 
-    render: function ( id ) {
+    render: function () {
 
-      this.requestedId = id; //App.swiperLoop ? id : id - 1;
-
-      //console.log( this.requestedId );
-
+      // Render html
       var html = _.template( swiperTpl )( {
         copy: App.data.copy,
         items: App.data.items,
@@ -6282,13 +6279,43 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       } );
       this.$el.html( html );
 
+
+      // Get the right number of slides (the loop version adds 2 slides)
+      App.slidesCount = this.$el.find( '.swiper-slide' ).length;
+
+
+      this.setupElements();
+      this.setupEvents();
+
+    },
+
+    goto: function ( id, speed ) {
+
+      //console.log( 'showin item ' + id );
+
+      if ( !this.swiper ) {
+
+        this.renderSwiper( id );
+
+      } else if ( this.imagesLoaded ) {
+
+        $( 'body' ).scrollTop( 0 );
+        var duration = speed || 0;
+        this.swiper.slideTo( id, duration );
+
+      }
+
+    },
+
+    renderSwiper: function ( id ) {
+
+      // Start the swiper
       this.swiper = new Swiper( this.$el.find( '.swiper-container' )[0], {
         // Optional parameters
         spaceBetween: 50,
         loop: App.swiperLoop,
         onlyExternal: App.supportTransitions ? false : true,
-        initialSlide: this.requestedId || 0,
-        //mode: 'horizontal',
+        initialSlide: id - 1,
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
@@ -6300,33 +6327,11 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         } : undefined
       } );
 
-      // Get the right number of slides (the loop version adds 2 slides)
-      App.slidesCount = this.$el.find( '.swiper-slide' ).length - (App.swiperLoop ? 2 : 0);
-
-      this.setupElements();
-      this.setupEvents();
-
       // set sizes
       setTimeout( function () {
+        $( 'body' ).scrollTop( 0 );
         this.onResize();
       }.bind( this ), 0 );
-
-
-    },
-
-    goto: function ( id, speed ) {
-
-      //console.log( 'showin item ' + id );
-
-      if ( this.imagesLoaded ) {
-
-        $( 'body' ).scrollTop( 0 );
-        var duration = speed || 0;
-        this.swiper.slideTo( id, duration );
-
-        //this.swiper.swipeTo( id, duration );
-
-      }
 
     },
 
@@ -6339,7 +6344,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
       this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
-      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).eq( this.requestedId );
+      this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
 
     },
 
@@ -6353,7 +6358,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
         this.imagesLoaded = true;
 
-        this.goto( this.requestedId, 0 );
+        //this.goto( this.requestedId, 0 );
 
         this.onResize();
 
@@ -6498,29 +6503,24 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
 
       e.preventDefault();
 
+      if ( !App.swiperView ) {
+        // Create swiper view with the requested id
+        App.swiperView = new SwiperView( '#swiper' );
+        App.swiperView.render();
+      }
+
       var id = parseInt( $( e.target ).closest( '.item' ).data( 'id' ) );
 
       // since the loop feature on the swiper changes all the indexes we have to get the requested id + 1
       if ( App.swiperLoop ) {
-        id = id + 1 >= App.slidesCount ? 0 : id + 1;
+        id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
-      if ( !App.swiperView ) {
+      console.log( id, App.slidesCount );
 
-        // Create swiper view with the requested id
-        App.swiperView = new SwiperView( '#swiper' );
-        App.swiperView.render( id );
-
-      } else {
-
-        App.swiperView.goto( id );
-
-      }
-
+      App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
-
       window.scrollTo( 0, 0 );
-
       App.currentItem = id;
 
     },
