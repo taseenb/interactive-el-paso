@@ -19,11 +19,6 @@ define( function ( require ) {
   // ##################################################
 
 
-  // Device
-  App.isTouch = $( 'html' ).hasClass( 'touch' );
-  App.isPhone = App.isTouch && (App.width < 481 || App.height < 481);
-
-
   // Global Events - pub/sub
   var Mediator = require( 'mediator-js' );
   App.mediator = new Mediator();
@@ -32,6 +27,11 @@ define( function ( require ) {
   // Resize event
   var resizeEvent = require( 'resize' );
   resizeEvent.initialize();
+
+
+  // Device
+  App.isTouch = $( 'html' ).hasClass( 'touch' );
+  App.isPhone = App.isTouch && (App.width < 481 || App.height < 481);
 
 
   // Import Swiper
