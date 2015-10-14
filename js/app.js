@@ -6602,7 +6602,7 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     setupEvents: function () {
 
-       //var event = App.isTouch ? 'touchstart' : 'click';
+      //var event = App.isTouch ? 'touchstart' : 'click';
       // this.$el.on( event, this.onClick.bind( this ) );
 
     },
@@ -6633,9 +6633,11 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     },
 
-    onResize: function() {
+    onResize: function () {
 
-      iframeMessenger.resize(this.$el.outerHeight(true));
+      console.log( this.$el.outerHeight( true ) );
+
+      iframeMessenger.resize( this.$el.outerHeight( true ) );
 
     }
 
