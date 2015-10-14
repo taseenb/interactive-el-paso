@@ -43,6 +43,7 @@ define( function ( require ) {
         spaceBetween: 50,
         loop: App.swiperLoop,
         onlyExternal: App.supportTransitions ? false : true,
+        initialSlide: this.requestedId || 0,
         //mode: 'horizontal',
 
         // Navigation arrows

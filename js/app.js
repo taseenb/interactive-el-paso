@@ -1,4 +1,4 @@
-/*! app / v0.0.1October 13, 2015 */
+/*! app / v0.0.1October 14, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -6287,6 +6287,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         spaceBetween: 50,
         loop: App.swiperLoop,
         onlyExternal: App.supportTransitions ? false : true,
+        initialSlide: this.requestedId || 0,
         //mode: 'horizontal',
 
         // Navigation arrows
@@ -6596,7 +6597,7 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     setupEvents: function () {
 
-       var event = App.isTouch ? 'touchstart' : 'click';
+       //var event = App.isTouch ? 'touchstart' : 'click';
       // this.$el.on( event, this.onClick.bind( this ) );
 
     },

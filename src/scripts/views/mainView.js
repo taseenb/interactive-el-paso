@@ -51,7 +51,7 @@ define( function ( require ) {
 
     setupEvents: function () {
 
-       var event = App.isTouch ? 'touchstart' : 'click';
+       //var event = App.isTouch ? 'touchstart' : 'click';
       // this.$el.on( event, this.onClick.bind( this ) );
 
     },
