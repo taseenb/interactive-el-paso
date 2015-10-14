@@ -90,6 +90,7 @@ define( function ( require ) {
       // set sizes
       setTimeout( function () {
         this.onResize();
+        App.mainView.onResize();
       }.bind( this ), 0 );
 
     },
@@ -120,6 +121,8 @@ define( function ( require ) {
         //this.goto( this.requestedId, 0 );
 
         this.onResize();
+
+        App.mainView.onResize();
 
         //console.log( e );
 

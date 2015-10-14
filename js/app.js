@@ -6334,6 +6334,7 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
       // set sizes
       setTimeout( function () {
         this.onResize();
+        App.mainView.onResize();
       }.bind( this ), 0 );
 
     },
@@ -6364,6 +6365,8 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         //this.goto( this.requestedId, 0 );
 
         this.onResize();
+
+        App.mainView.onResize();
 
         //console.log( e );
 
