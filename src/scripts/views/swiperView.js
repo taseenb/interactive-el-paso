@@ -29,6 +29,7 @@ define( function ( require ) {
 
       // Render html
       var html = _.template( swiperTpl )( {
+        lazyLoading: App.supportTransitions,
         copy: App.data.copy,
         items: App.data.items,
         optimizedFolder: App.isPhone ? 'opt/' : '' // load optimized gifs if this is a phone
@@ -78,7 +79,7 @@ define( function ( require ) {
         // Disable preloading of all images
         preloadImages: false,
         // Enable lazy loading
-        lazyLoading: true,
+        lazyLoading: App.supportTransitions ? true : false,
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
@@ -107,6 +108,9 @@ define( function ( require ) {
 
       this.$slideH1 = this.$slides.find( 'h1' ).first();
       this.$detailsWrapper = this.$slides.find( '.details-wrapper' );
+
+      this.$anim = this.$detailsWrapper.find( '.anim' );
+
       this.$animImage = this.$detailsWrapper.find( '.anim-img' ).first();
 
     },
@@ -190,7 +194,15 @@ define( function ( require ) {
 
       //console.log( e.width, e.height );
 
-      var animHeight = this.$animImage.outerHeight( true );
+
+      // Set image wrapper min height (to place the preloader)
+      var animRatio = 558 / 634;
+      var animWidth = this.$anim.width();
+      var animHeight = ~~(animWidth * animRatio);
+      this.$anim.css( 'min-height', animHeight + 'px' );
+
+
+      //var animHeight = this.$animImage.outerHeight( true );
       var titleHeight = this.$slideH1.outerHeight( true );
 
       if ( animHeight > 0 ) {

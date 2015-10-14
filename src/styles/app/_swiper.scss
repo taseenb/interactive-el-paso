@@ -1,11 +1,5 @@
 #swiper {
 
-  /* Specify Swiper's Size: */
-  //.swiper-container,
-  //.swiper-slide {
-  //  height: 100%;
-  //}
-
   padding: 0;
   width: 100%;
   box-sizing: border-box;
@@ -227,6 +221,14 @@
           width: 100%;
           max-width: 100%;
           margin: 0 auto 25px;
+          min-height: 100px;
+
+          .swiper-lazy-preloader {
+            width: 36px;
+            height: 36px;
+            margin-left: -18px * 2;
+            margin-top: -18px * 2;
+          }
 
           @media(min-width: 740px) {
             //width: auto;

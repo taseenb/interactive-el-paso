@@ -1212,7 +1212,6 @@ body {
           color: #cf4b1b;
           text-transform: uppercase; }
     #main #content #swiper {
-      /* Specify Swiper's Size: */
       padding: 0;
       width: 100%;
       box-sizing: border-box; }
@@ -1404,7 +1403,13 @@ body {
               position: relative;
               width: 100%;
               max-width: 100%;
-              margin: 0 auto 25px; }
+              margin: 0 auto 25px;
+              min-height: 100px; }
+              #main #content #swiper .swiper-container .swiper-slide .details-wrapper .anim .swiper-lazy-preloader {
+                width: 36px;
+                height: 36px;
+                margin-left: -36px;
+                margin-top: -36px; }
               @media (min-width: 740px) {
                 #main #content #swiper .swiper-container .swiper-slide .details-wrapper .anim {
                   max-width: 40%;

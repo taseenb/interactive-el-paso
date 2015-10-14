@@ -20,10 +20,20 @@
             <div class="details-wrapper">
 
                 <div class="anim">
+
+                    <% if (lazyLoading) { %>
+
                     <img data-src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img swiper-lazy">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 
+                    <% } else { %>
+
+                    <img src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img">
+
+                    <% } %>
+
                     <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">
+
                 </div>
 
 
