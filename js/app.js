@@ -6317,13 +6317,13 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         // Optional parameters
         spaceBetween: 50,
         loop: App.swiperLoop,
-        onlyExternal: App.supportTransitions ? false : true,
+        onlyExternal: App.supportTransitions ? false : true, // disable swipe on IE9
         initialSlide: App.swiperLoop ? id - 1 : id,
 
         // Disable preloading of all images
-        preloadImages: false,
+        preloadImages: App.supportTransitions ? false : true, // preload all on IE9
         // Enable lazy loading
-        lazyLoading: App.supportTransitions ? true : false,
+        lazyLoading: App.supportTransitions ? true : false, // lazy load on all browsers but IE9
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
