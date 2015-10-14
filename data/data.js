@@ -7,7 +7,7 @@ callback( {
   },
   "items": [
     {
-      name: "Tortillas",
+      name: "Tortilla",
       img1: "tortilla-1.jpg",
       img2: "tortilla-2.jpg",
       anim: "tortilla.gif",
@@ -17,7 +17,7 @@ callback( {
       }
     },
     {
-      name: "LIMES",
+      name: "LIME",
       img1: "lime-1.jpg",
       img2: "lime-2.jpg",
       anim: "lime.gif",
@@ -77,7 +77,7 @@ callback( {
       }
     },
     {
-      name: "Roma tomatoes",
+      name: "Roma tomato",
       img1: "tomato-1.jpg",
       img2: "tomato-2.jpg",
       anim: "tomato.gif",
