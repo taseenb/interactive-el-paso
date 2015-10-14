@@ -75,7 +75,7 @@ define( function ( require ) {
         onlyExternal: App.supportTransitions ? false : true,
         initialSlide: App.swiperLoop ? id - 1 : id,
 
-        lazyLoading: true,
+        lazyLoading: true, //
 
         // Navigation arrows
         nextButton: App.supportTransitions ? '.swiper-button-next' : undefined,
