@@ -75,8 +75,9 @@ define( function ( require ) {
         onlyExternal: App.supportTransitions ? false : true,
         initialSlide: App.swiperLoop ? id - 1 : id,
 
-        // Lazy loading
+        // Disable preloading of all images
         preloadImages: false,
+        // Enable lazy loading
         lazyLoading: true,
 
         // Navigation arrows
