@@ -1046,10 +1046,10 @@ body {
   #main header .pattern-wrapper {
     display: inline-block; }
     #main header .pattern-wrapper .pattern .img-wrapper {
-      top: 16px;
+      top: 14px;
       padding: 0 0 20px 0; }
   #main footer .pattern-wrapper .pattern .img-wrapper {
-    bottom: 16px;
+    bottom: 14px;
     padding: 20px 0 0 0; }
   #main header,
   #main footer {
@@ -1063,14 +1063,14 @@ body {
       @media (min-width: 740px) {
         #main header .pattern-wrapper,
         #main footer .pattern-wrapper {
-          padding: 0 100px; } }
+          padding: 0 80px; } }
       #main header .pattern-wrapper .pattern,
       #main footer .pattern-wrapper .pattern {
         position: relative; }
         @media (min-width: 740px) {
           #main header .pattern-wrapper .pattern,
           #main footer .pattern-wrapper .pattern {
-            height: 100px; } }
+            height: 80px; } }
         #main header .pattern-wrapper .pattern .img-wrapper,
         #main footer .pattern-wrapper .pattern .img-wrapper {
           position: relative;
@@ -1105,11 +1105,12 @@ body {
             position: absolute;
             display: inline-block;
             top: 0;
-            width: 67px;
-            height: 67px;
+            width: 47px;
+            height: 47px;
             padding: 17px 16px 16px 16px;
             background-repeat: no-repeat;
-            background-position: center center; } }
+            background-position: center center;
+            background-size: 65% 65%; } }
       #main header .pattern-wrapper .chili-bottom-left,
       #main footer .pattern-wrapper .chili-bottom-left {
         left: 0;
@@ -1141,10 +1142,11 @@ body {
       padding: 25px;
       position: relative;
       font-size: 0;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      text-align: center; }
       @media (min-width: 740px) {
         #main #content #list {
-          padding: 0 25px; } }
+          padding: 0 70px; } }
       #main #content #list .title-wrapper {
         width: 100%;
         position: relative;

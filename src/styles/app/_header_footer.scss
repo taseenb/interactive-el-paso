@@ -15,7 +15,7 @@ footer {
     position: relative;
 
     @media(min-width: 740px) {
-      padding: 0 100px;
+      padding: 0 80px;
     }
 
     .pattern {
@@ -24,7 +24,7 @@ footer {
 
       @media(min-width: 740px) {
         //margin: 0 100px;
-        height: 100px;
+        height: 80px;
       }
 
       .img-wrapper {
@@ -65,16 +65,14 @@ footer {
 
       @media(min-width: 740px) {
         position: absolute;
-
         display: inline-block;
         top: 0;
-        width: 67px;
-        height: 67px;
+        width: 47px;
+        height: 47px;
         padding: 17px 16px 16px 16px;
-        //position: absolute;
-        //position: relative;
         background-repeat: no-repeat;
         background-position: center center;
+        background-size: 65% 65%;
       }
     }
 

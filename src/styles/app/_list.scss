@@ -4,9 +4,10 @@
   position: relative;
   font-size: 0;
   box-sizing: border-box;
+  text-align: center;
 
   @media(min-width: 740px) {
-    padding: 0 25px;
+    padding: 0 70px;
   }
 
   .title-wrapper {
@@ -18,10 +19,7 @@
     color: #FFF;
     font-family: 'Londrina Solid', sans-serif;
     letter-spacing: 0.5px;
-
     padding: 0 0 20px 0;
-
-
   }
 
 
