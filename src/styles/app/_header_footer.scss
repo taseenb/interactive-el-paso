@@ -6,7 +6,10 @@ footer {
 
   position: relative;
   font-size: 0;
-  //height: 100px;
+
+  @media(min-width: 740px) {
+    background: none !important;
+  }
 
   .pattern-wrapper {
     box-sizing: border-box;

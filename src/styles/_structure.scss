@@ -20,6 +20,11 @@ body {
   background-image: url('#{$img-path}bg.jpg');
   background-size: cover;
 
+  @media(min-width: 740px) {
+    background-image: url('#{$img-path}grunge-bg.jpg');
+    background-size: 100% 100%;
+  }
+
   @import 'app/header_footer';
   @import 'app/content';
 
