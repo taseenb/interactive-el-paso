@@ -13,6 +13,22 @@
     cursor: pointer;
   }
 
+  .back-to-list {
+    &.right {
+      @media(min-width: 740px) {
+        position: absolute;
+        display: block;
+        margin: 0;
+        width: 50px;
+        height: 50px;
+        top: 0px;
+        right: 30px + 77px;
+        z-index: 100;
+        cursor: pointer;
+      }
+    }
+  }
+
   .h1-wrapper {
     .back-to-list {
       display: none;
@@ -98,9 +114,9 @@
 
     @media(min-width: 740px) {
       display: block;
-      @include css3-prefix(background-size, 44px/2 50px/2);
-      width: 44px / 2;
-      height: 50px / 2;
+      @include css3-prefix(background-size, 38px auto);
+      width: 43px;
+      height: 50px;
       margin-top: -22px;
     }
   }
@@ -140,12 +156,20 @@
     .swiper-wrapper {
       @media(min-width: 740px) {
         padding: 0 (47px + 30px);
+
+        padding: 0;
       }
     }
 
     .swiper-slide {
       font-size: 0;
       position: relative;
+
+      &.swiper-slide-active {
+        @media(min-width: 740px) {
+          margin-left: 50px;
+        }
+      }
 
       // ITEM TITLE
       h1 {
@@ -178,9 +202,12 @@
           height: 50px;
           line-height: 50px;
           background-image: url('#{$img-path}titles-bg.png');
-          background-size: auto 100%;
+          background-size: 100% 100%;
           background-position: left center;
-          width: 300px;
+          width: 350px;
+
+          font-size: 30px;
+          padding: 0 40px;
         }
 
       }
@@ -269,10 +296,6 @@
             max-width: 500px;
           }
 
-          //@media(min-width: 1140px) {
-          //  max-width: 550px;
-          //}
-
           @media(min-width: 1300px) {
             max-width: 600px;
           }
@@ -284,6 +307,12 @@
             letter-spacing: 1px;
             padding: 0 0 12px 0;
             margin: 0;
+
+            @media(min-width: 740px) {
+              font-size: 30px;
+              padding: 0 0 18px 0;
+            }
+
           }
 
           p {

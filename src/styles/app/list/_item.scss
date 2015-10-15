@@ -67,6 +67,17 @@
     font-family: 'Londrina Solid', sans-serif;
     color: #cf4b1b;
     text-transform: uppercase;
+
+    @media(min-width: 740px) {
+      font-size: 22px;
+      margin-top: 8px;
+    }
+
+    @media(min-width: 980px) {
+      font-size: 26px;
+      margin-top: 12px;
+    }
+
   }
 
 }

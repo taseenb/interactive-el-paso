@@ -9,8 +9,6 @@ body {
 body {
   //overflow: hidden;
   //background-color: #f1bb03;
-  background-image: url('#{$img-path}bg.jpg');
-  background-size: cover;
 }
 
 @import 'app/debug';
@@ -19,6 +17,8 @@ body {
 
   position: relative;
   width: 100%;
+  background-image: url('#{$img-path}bg.jpg');
+  background-size: cover;
 
   @import 'app/header_footer';
   @import 'app/content';
