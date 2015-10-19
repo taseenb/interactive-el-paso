@@ -50,6 +50,10 @@ define( function ( require ) {
     App.swiper = require( 'swiper' );
 
 
+    // Analytics
+    require( 'analytics' );
+
+
     // Get data and start main view
     $.ajax( {
       url: 'data/data.js',

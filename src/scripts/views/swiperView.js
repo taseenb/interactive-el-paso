@@ -87,6 +87,16 @@ define( function ( require ) {
 
         onSlideChangeEnd: App.supportTransitions ? function ( swiper ) {
           App.currentItem = swiper.activeIndex;
+
+          var name = App.data.items[swiper.activeIndex].name;
+
+          window.ga( 'send', {
+            'hitType': 'event',          // Required.
+            'eventCategory': 'view ingredients',   // Required.
+            'eventAction': 'click',  // Required.
+            'eventLabel': name
+          } );
+
           //console.log( App.currentItem );
         } : undefined
       } );
@@ -179,6 +189,13 @@ define( function ( require ) {
 
       e.preventDefault();
       App.mainView.show( 'list' );
+
+      window.ga( 'send', {
+        'hitType': 'event',          // Required.
+        'eventCategory': 'view menu',   // Required.
+        'eventAction': 'click',  // Required.
+        'eventLabel': 'back to menu'
+      } );
 
     },
 

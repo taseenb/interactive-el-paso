@@ -1,4 +1,4 @@
-/*! app / v0.0.1October 15, 2015 */
+/*! app / v0.0.1October 19, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -5836,6 +5836,29 @@ else if (typeof define === 'function' && define.amd) {
         return window.Swiper;
     });
 };
+define( 'analytics',[],
+  function () {
+
+    (function ( i, s, o, g, r, a, m ) {
+      i.GoogleAnalyticsObject = r;
+      i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push( arguments );
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement( o );
+      m = s.getElementsByTagName( o )[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore( a, m );
+    })( window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga' );
+
+    ga( 'create', 'UA-67811141-1', 'auto' );
+    ga( 'send', 'pageview' );
+
+    return ga;
+
+  } );
+
 /**
  * @license RequireJS text 2.0.12 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -6331,6 +6354,16 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
         onSlideChangeEnd: App.supportTransitions ? function ( swiper ) {
           App.currentItem = swiper.activeIndex;
+
+          var name = App.data.items[swiper.activeIndex].name;
+
+          window.ga( 'send', {
+            'hitType': 'event',          // Required.
+            'eventCategory': 'view ingredients',   // Required.
+            'eventAction': 'click',  // Required.
+            'eventLabel': name
+          } );
+
           //console.log( App.currentItem );
         } : undefined
       } );
@@ -6423,6 +6456,13 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
 
       e.preventDefault();
       App.mainView.show( 'list' );
+
+      window.ga( 'send', {
+        'hitType': 'event',          // Required.
+        'eventCategory': 'view menu',   // Required.
+        'eventAction': 'click',  // Required.
+        'eventLabel': 'back to menu'
+      } );
 
     },
 
@@ -6541,6 +6581,17 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
       App.mainView.show( 'swiper' );
       window.scrollTo( 0, 0 );
       App.currentItem = id;
+
+
+      // Google Analytics
+      var name = App.data.items[id].name;
+
+      window.ga( 'send', {
+        'hitType': 'event',          // Required.
+        'eventCategory': 'view ingredients',   // Required.
+        'eventAction': 'click',  // Required.
+        'eventLabel': 'menu - ' + name
+      } );
 
     },
 
@@ -6667,7 +6718,7 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
   return View;
 
 } );
-define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],function ( require ) {
+define( 'app',['require','mediator-js','resize','swiper','analytics','views/mainView.js'],function ( require ) {
 
   'use strict';
 
@@ -6717,6 +6768,10 @@ define( 'app',['require','mediator-js','resize','swiper','views/mainView.js'],fu
 
     // Import Swiper
     App.swiper = require( 'swiper' );
+
+
+    // Analytics
+    require( 'analytics' );
 
 
     // Get data and start main view

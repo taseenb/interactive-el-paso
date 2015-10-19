@@ -24,6 +24,8 @@
     "$": true,
     "_": true,
     "Swiper": true,
-    "iframeMessenger": true
+    "iframeMessenger": true,
+    "ga": true,
+    "jQuery": true
   }
 }

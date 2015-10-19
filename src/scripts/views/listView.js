@@ -74,6 +74,17 @@ define( function ( require ) {
       window.scrollTo( 0, 0 );
       App.currentItem = id;
 
+
+      // Google Analytics
+      var name = App.data.items[id].name;
+
+      window.ga( 'send', {
+        'hitType': 'event',          // Required.
+        'eventCategory': 'view ingredients',   // Required.
+        'eventAction': 'click',  // Required.
+        'eventLabel': 'menu - ' + name
+      } );
+
     },
 
     onShow: function () {

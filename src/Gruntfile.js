@@ -15,7 +15,9 @@ module.exports = function ( grunt ) {
         options: {
           port: pkg.config.port,
           hostname: '*',
-          livereload: true,
+          livereload: {
+            port: 35749
+          },
           base: '../',
           middleware: function ( connect, options, middlewares ) {
             // inject a custom middleware http://stackoverflow.com/a/24508523
@@ -33,12 +35,20 @@ module.exports = function ( grunt ) {
       scripts: {
         files: ['scripts/**/*'],
         tasks: ['requirejs'],
-        options: {livereload: true}
+        options: {
+          livereload: {
+            port: 35749
+          }
+        }
       },
       styles: {
         files: ['styles/**/*'],
         tasks: ['sass'],
-        options: {livereload: true}
+        options: {
+          livereload: {
+            port: 35749
+          }
+        }
       }
     },
     sass: {
