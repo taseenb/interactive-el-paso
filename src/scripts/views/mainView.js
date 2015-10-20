@@ -89,6 +89,17 @@ define( function ( require ) {
 
     },
 
+    scrollToTop: function() {
+
+      // Scroll to the top of the iframe
+      iframeMessenger.scrollTo( 0, 0 );
+      iframeMessenger.getPositionInformation( function ( obj ) {
+        var y = Math.abs( obj.iframeTop );
+        iframeMessenger.scrollTo( 0, y );
+      } );
+
+    },
+
     onResize: function () {
 
       //console.log( this.$el.outerHeight( true ) );

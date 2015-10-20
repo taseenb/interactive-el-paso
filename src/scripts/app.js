@@ -2,8 +2,9 @@ define( function ( require ) {
 
   'use strict';
 
-  $( function () {
+  var DEBUG = true;
 
+  $( function () {
 
     // Create App global
     window.App = window.App || {};
@@ -12,7 +13,7 @@ define( function ( require ) {
     App.supportTransitions = !$( 'html' ).hasClass( 'no-csstransitions' );
 
     // Disable console.log on IE 9
-    if ( !App.supportTransitions ) {
+    if ( !App.supportTransitions || DEBUG === false ) {
       window.console = {
         log: function () {
         }

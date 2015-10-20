@@ -1,4 +1,4 @@
-/*! app / v0.0.1October 19, 2015 */
+/*! app / v0.0.1October 20, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -6260,7 +6260,7 @@ define('text!tpl/content.html',[],function () { return '<div id="content">\n\n  
 define('text!tpl/footer.html',[],function () { return '<footer>\n\n    <div class="pattern-wrapper">\n        <div class="chili chili-bottom-left">&nbsp;</div>\n        <div class="pattern">\n\n            <div class="img-wrapper">\n\n                <% for (var i=0;i<40;i++) { %>\n                <img src="img/border-pattern.png">\n                <% } %>\n\n            </div>\n\n        </div>\n        <div class="chili chili-bottom-right">&nbsp;</div>\n    </div>\n\n</footer>';});
 
 
-define('text!tpl/list.html',[],function () { return '<!--<div class="title-wrapper">-->\n    <!--<%= copy.title %>-->\n<!--</div>-->\n\n<% items.forEach(function(item, i) { %>\n\n<div class="item <%= rollOver %>" data-id="<%= i %>">\n    <div class="open-item image">\n        <img class="normal" src="img/items/<%= item.img1 %>">\n\n        <% if (!isTouch) { %>\n        <img class="over" src="img/items/<%= item.img2 %>">\n        <% } %>\n\n        <img class="bg" src="img/items-bg.png">\n    </div>\n    <div class="open-item name">\n        <%= item.name %>\n    </div>\n</div>\n\n<% }); %>';});
+define('text!tpl/list.html',[],function () { return '<!--<div class="title-wrapper">-->\n    <!--<%= copy.title %>-->\n<!--</div>-->\n\n<% items.forEach(function(item, i) { %>\n\n<div class="item <%= rollOver %>" data-id="<%= i %>">\n    <div class="open-item image">\n\n        <img class="normal" data-src="img/items/<%= item.img1 %>">\n\n        <% if (!isTouch) { %>\n        <img class="over" src="img/items/<%= item.img2 %>">\n        <% } %>\n\n        <img class="bg" src="img/items-bg.png">\n    </div>\n    <div class="open-item name">\n        <%= item.name %>\n    </div>\n</div>\n\n<% }); %>';});
 
 
 define('text!tpl/swiper.html',[],function () { return '<!--<img src="img/back-to-list.png" class="back-to-list only-mobile">-->\n\n<!-- Slider main container -->\n<div class="swiper-container">\n\n    <!-- Additional required wrapper -->\n    <div class="swiper-wrapper">\n        <!-- Slides -->\n\n        <% items.forEach(function(item, i) { %>\n        <div class="swiper-slide">\n\n            <!--<img src="img/back-to-list.png" class="back-to-list only-tablet-and-above right">-->\n\n            <div class="h1-wrapper">\n\n                <img src="img/back-to-list.png" class="back-to-list only-tablet-and-above">\n\n                <h1>\n                    <span><%= item.name %></span>\n                </h1>\n            </div>\n\n            <div class="details-wrapper">\n\n                <div class="anim">\n\n                    <% if (lazyLoading) { %>\n\n                    <img data-src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img swiper-lazy">\n\n                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\n\n                    <% } else { %>\n\n                    <img src="img/animations/<%= optimizedFolder %><%= item.anim %>" class="anim-img">\n\n                    <% } %>\n\n                    <img src="img/back-to-list.png" class="back-to-list only-mobile slide-nav-ui">\n\n                </div>\n\n\n                <div class="details">\n\n                    <h2><%= copy[\'history-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.history %>\n                    </p>\n\n                    <h2><%= copy[\'tip-title\'] %></h2>\n\n                    <p class="history-text">\n                        <%= item.copy.tip %>\n                    </p>\n\n                </div>\n\n            </div>\n\n\n        </div>\n        <% }); %>\n\n    </div>\n\n    <!-- If we need navigation buttons -->\n    <div class="swiper-button-prev" class="arrow only-tablet-and-above"></div>\n    <div class="swiper-button-next" class="arrow only-tablet-and-above"></div>\n\n\n    <div class="mobile-nav only-mobile slide-nav-ui">\n\n        <div class="arrow swiper-button-prev hidden"></div>\n        <div class="arrow swiper-button-next hidden"></div>\n\n    </div>\n\n\n</div>\n\n\n';});
@@ -6353,18 +6353,38 @@ define( 'views/swiperView.js',['require','underscore','text!tpl/swiper.html'],fu
         prevButton: App.supportTransitions ? '.swiper-button-prev' : undefined,
 
         onSlideChangeEnd: App.supportTransitions ? function ( swiper ) {
+
           App.currentItem = swiper.activeIndex;
 
-          var name = App.data.items[swiper.activeIndex].name;
 
-          window.ga( 'send', {
-            'hitType': 'event',          // Required.
-            'eventCategory': 'view ingredients',   // Required.
-            'eventAction': 'click',  // Required.
-            'eventLabel': name
-          } );
+          // Analytics (only trigger event if the user is not coming from the menu list)
+          if ( App.listClick ) {
 
-          //console.log( App.currentItem );
+            App.listClick = false;
+
+            return;
+
+          } else {
+
+            var idx = swiper.activeIndex - 1;
+
+            if ( idx < 0 ) {
+              idx = App.data.items.length - 1;
+            } else if ( idx >= App.data.items.length ) {
+              idx = 1;
+            }
+
+            var name = App.data.items[idx].name;
+
+            window.ga( 'send', {
+              'hitType': 'event',          // Required.
+              'eventCategory': 'view ingredients',   // Required.
+              'eventAction': 'click',  // Required.
+              'eventLabel': name
+            } );
+
+          }
+
         } : undefined
       } );
 
@@ -6545,8 +6565,51 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
       } );
       this.$el.html( html );
 
+      this.preloadImages();
+
       this.setupElements();
       this.setupEvents();
+
+    },
+
+    preloadImages: function () {
+
+      // Preload list images
+      var $imageEl = this.$el.find( '.normal' );
+      var imagesCount = $imageEl.length;
+      var loaded = 0;
+
+      $imageEl.each( function ( i, el ) {
+
+        //var image = new Image();
+        var src = $( el ).data( 'src' );
+
+        el.onload = function () { // always fires the event.
+          loaded += 1;
+          console.log( 'image ' + src + ' loaded!' );
+
+          if ( imagesCount == loaded ) {
+            console.log( 'ALL IMAGES LOADED' );
+            this.onResize();
+          }
+        }.bind( this );
+
+        el.onerror = function () {
+          loaded += 1;
+          console.log( 'error loading image ' + src );
+
+          if ( imagesCount == loaded ) {
+            console.log( 'ALL IMAGES LOADED' );
+            this.onResize();
+          }
+        }.bind( this );
+
+        el.src = src;
+        //image.src = src;
+
+        //$( image ).appendTo( $imageEl.eq( i ).parent() ).addClass( 'normal' );
+
+      }.bind( this ) );
 
     },
 
@@ -6577,14 +6640,15 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
         id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
+      App.listClick = true;
+
       App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
       window.scrollTo( 0, 0 );
       App.currentItem = id;
 
-
       // Google Analytics
-      var name = App.data.items[id].name;
+      var name = App.data.items[id - 1].name;
 
       window.ga( 'send', {
         'hitType': 'event',          // Required.
@@ -6592,6 +6656,9 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
         'eventAction': 'click',  // Required.
         'eventLabel': 'menu - ' + name
       } );
+
+
+      App.mainView.scrollToTop();
 
     },
 
@@ -6606,6 +6673,8 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
     onResize: function ( e ) {
 
       // console.log(e.width, e.height);
+
+      iframeMessenger.resize( App.mainView.$el.outerHeight( true ) ); //
 
     }
 
@@ -6705,6 +6774,17 @@ define( 'views/mainView.js',['require','underscore','text!tpl/header.html','text
 
     },
 
+    scrollToTop: function() {
+
+      // Scroll to the top of the iframe
+      iframeMessenger.scrollTo( 0, 0 );
+      iframeMessenger.getPositionInformation( function ( obj ) {
+        var y = Math.abs( obj.iframeTop );
+        iframeMessenger.scrollTo( 0, y );
+      } );
+
+    },
+
     onResize: function () {
 
       //console.log( this.$el.outerHeight( true ) );
@@ -6722,8 +6802,9 @@ define( 'app',['require','mediator-js','resize','swiper','analytics','views/main
 
   'use strict';
 
-  $( function () {
+  var DEBUG = true;
 
+  $( function () {
 
     // Create App global
     window.App = window.App || {};
@@ -6732,7 +6813,7 @@ define( 'app',['require','mediator-js','resize','swiper','analytics','views/main
     App.supportTransitions = !$( 'html' ).hasClass( 'no-csstransitions' );
 
     // Disable console.log on IE 9
-    if ( !App.supportTransitions ) {
+    if ( !App.supportTransitions || DEBUG === false ) {
       window.console = {
         log: function () {
         }

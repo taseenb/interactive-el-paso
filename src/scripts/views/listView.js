@@ -37,8 +37,51 @@ define( function ( require ) {
       } );
       this.$el.html( html );
 
+      this.preloadImages();
+
       this.setupElements();
       this.setupEvents();
+
+    },
+
+    preloadImages: function () {
+
+      // Preload list images
+      var $imageEl = this.$el.find( '.normal' );
+      var imagesCount = $imageEl.length;
+      var loaded = 0;
+
+      $imageEl.each( function ( i, el ) {
+
+        //var image = new Image();
+        var src = $( el ).data( 'src' );
+
+        el.onload = function () { // always fires the event.
+          loaded += 1;
+          console.log( 'image ' + src + ' loaded!' );
+
+          if ( imagesCount == loaded ) {
+            console.log( 'ALL IMAGES LOADED' );
+            this.onResize();
+          }
+        }.bind( this );
+
+        el.onerror = function () {
+          loaded += 1;
+          console.log( 'error loading image ' + src );
+
+          if ( imagesCount == loaded ) {
+            console.log( 'ALL IMAGES LOADED' );
+            this.onResize();
+          }
+        }.bind( this );
+
+        el.src = src;
+        //image.src = src;
+
+        //$( image ).appendTo( $imageEl.eq( i ).parent() ).addClass( 'normal' );
+
+      }.bind( this ) );
 
     },
 
@@ -69,14 +112,15 @@ define( function ( require ) {
         id = id + 1 > App.slidesCount ? 1 : id + 1;
       }
 
+      App.listClick = true;
+
       App.swiperView.goto( id );
       App.mainView.show( 'swiper' );
       window.scrollTo( 0, 0 );
       App.currentItem = id;
 
-
       // Google Analytics
-      var name = App.data.items[id].name;
+      var name = App.data.items[id - 1].name;
 
       window.ga( 'send', {
         'hitType': 'event',          // Required.
@@ -84,6 +128,9 @@ define( function ( require ) {
         'eventAction': 'click',  // Required.
         'eventLabel': 'menu - ' + name
       } );
+
+
+      App.mainView.scrollToTop();
 
     },
 
@@ -98,6 +145,8 @@ define( function ( require ) {
     onResize: function ( e ) {
 
       // console.log(e.width, e.height);
+
+      iframeMessenger.resize( App.mainView.$el.outerHeight( true ) ); //
 
     }
 

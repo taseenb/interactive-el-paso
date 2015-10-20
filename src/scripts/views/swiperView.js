@@ -86,18 +86,38 @@ define( function ( require ) {
         prevButton: App.supportTransitions ? '.swiper-button-prev' : undefined,
 
         onSlideChangeEnd: App.supportTransitions ? function ( swiper ) {
+
           App.currentItem = swiper.activeIndex;
 
-          var name = App.data.items[swiper.activeIndex].name;
 
-          window.ga( 'send', {
-            'hitType': 'event',          // Required.
-            'eventCategory': 'view ingredients',   // Required.
-            'eventAction': 'click',  // Required.
-            'eventLabel': name
-          } );
+          // Analytics (only trigger event if the user is not coming from the menu list)
+          if ( App.listClick ) {
 
-          //console.log( App.currentItem );
+            App.listClick = false;
+
+            return;
+
+          } else {
+
+            var idx = swiper.activeIndex - 1;
+
+            if ( idx < 0 ) {
+              idx = App.data.items.length - 1;
+            } else if ( idx >= App.data.items.length ) {
+              idx = 1;
+            }
+
+            var name = App.data.items[idx].name;
+
+            window.ga( 'send', {
+              'hitType': 'event',          // Required.
+              'eventCategory': 'view ingredients',   // Required.
+              'eventAction': 'click',  // Required.
+              'eventLabel': name
+            } );
+
+          }
+
         } : undefined
       } );
 
