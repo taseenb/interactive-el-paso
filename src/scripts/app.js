@@ -2,7 +2,7 @@ define( function ( require ) {
 
   'use strict';
 
-  var DEBUG = true;
+  var DEBUG = false;
 
   $( function () {
 

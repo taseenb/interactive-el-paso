@@ -60,7 +60,7 @@ define( function ( require ) {
           loaded += 1;
           console.log( 'image ' + src + ' loaded!' );
 
-          if ( imagesCount == loaded ) {
+          if ( imagesCount === loaded ) {
             console.log( 'ALL IMAGES LOADED' );
             this.onResize();
           }
@@ -70,7 +70,7 @@ define( function ( require ) {
           loaded += 1;
           console.log( 'error loading image ' + src );
 
-          if ( imagesCount == loaded ) {
+          if ( imagesCount === loaded ) {
             console.log( 'ALL IMAGES LOADED' );
             this.onResize();
           }

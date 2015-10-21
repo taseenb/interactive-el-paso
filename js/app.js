@@ -1,4 +1,4 @@
-/*! app / v0.0.1October 20, 2015 */
+/*! app / v0.0.1October 21, 2015 */
 /**
  * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -5852,7 +5852,7 @@ define( 'analytics',[],
       m.parentNode.insertBefore( a, m );
     })( window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga' );
 
-    ga( 'create', 'UA-67811141-1', 'auto' );
+    ga( 'create', 'UA-69034718-1', 'auto' );
     ga( 'send', 'pageview' );
 
     return ga;
@@ -6588,7 +6588,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
           loaded += 1;
           console.log( 'image ' + src + ' loaded!' );
 
-          if ( imagesCount == loaded ) {
+          if ( imagesCount === loaded ) {
             console.log( 'ALL IMAGES LOADED' );
             this.onResize();
           }
@@ -6598,7 +6598,7 @@ define( 'views/listView.js',['require','underscore','text!tpl/list.html','views/
           loaded += 1;
           console.log( 'error loading image ' + src );
 
-          if ( imagesCount == loaded ) {
+          if ( imagesCount === loaded ) {
             console.log( 'ALL IMAGES LOADED' );
             this.onResize();
           }
@@ -6802,7 +6802,7 @@ define( 'app',['require','mediator-js','resize','swiper','analytics','views/main
 
   'use strict';
 
-  var DEBUG = true;
+  var DEBUG = false;
 
   $( function () {
 
